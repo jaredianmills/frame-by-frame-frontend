@@ -1,11 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import ProjectCard from './ProjectCard.js'
 
 const ProjectList = (props) => {
-  console.log(props);
+  const { projects } = props
+
   return (
     <div>
-      hi from project list
+      {projects.map(project => <ProjectCard key={project.id} project={project}/>)}
     </div>
   )
 }

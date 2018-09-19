@@ -1,3 +1,5 @@
+import { SET_CURRENT_PROJECT } from '../types'
+
 let initialState = {
   user: {
     id: 1,
@@ -25,11 +27,14 @@ let initialState = {
         ]
       }
     ],
-  }
+  },
+  currentProject: null,
 }
 
 const userReducer = (state = initialState, action) => {
   switch(action.type) {
+    case SET_CURRENT_PROJECT:
+      return {...state, currentProject: action.payload}
     default:
       return state
   }
