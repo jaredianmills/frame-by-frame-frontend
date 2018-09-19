@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import * as actions from '../actions'
+import { Button } from 'semantic-ui-react'
 import { Player,
   ControlBar,
   BigPlayButton,
@@ -13,33 +16,35 @@ class Video extends Component {
     super(props)
   }
 
-  getCurrentTime = () => {
-    const { player } = this.refs.player.getState();
-    console.log(player.currentTime);
-  }
-
-  goToTime = () => {
-    console.log(this.refs);
-    const { player } = this.refs.player.getState();
-    this.refs.player.seek(786.02847)
-  }
-
-  makeComment = () => {
-    const { player } = this.refs.player.getState();
+  addNote = () => {
+    const { player } = this.refs.player.getState()
     this.refs.player.pause()
-    this.props.renderCommentForm(player.currentTime)
+    this.props.setCurrentVideoTime(player.currentTime)
+    this.props.renderNoteForm()
 
   }
 
+  // goToTime = () => {
+  //   const { player } = this.refs.player.getState();
+  //   this.refs.player.seek(7.2501)
+  // }
+  //
+  // makeComment = () => {
+  //   const { player } = this.refs.player.getState();
+  //   this.refs.player.pause()
+  //   this.props.renderCommentForm(player.currentTime)
+  //
+  // }
 
     render() {
+      // console.log(this.props);
       return(
-        <div>
+        <div style={{width: "50%", height: 'auto', margin: '1%'}}>
           <Player
             ref="player"
-            src="https://flatironmod5project.s3.amazonaws.com/IMG_4482.MOV"
+            src={this.props.project.video_url}
             autoPlay={false}
-            >
+          >
             <BigPlayButton position="center" />
             <ControlBar autoHide={false}>
               <ReplayControl seconds={10} order={1.1} />
@@ -51,12 +56,23 @@ class Video extends Component {
               />
             </ControlBar>
           </Player>
-          <button onClick={this.getCurrentTime}>get current time</button>
-          <button onClick={this.goToTime}>go to time</button>
-          <button onClick={this.makeComment}>make comment</button>
+          <Button style={{margin: '1%'}}onClick={this.addNote}>Add a Note</Button>
+          {/* <button onClick={this.goToTime}>go to time</button> */}
+          {/* <button onClick={this.makeComment}>make comment</button>  */}
         </div>
       )
     }
 }
 
-export default Video
+const mapStateToProps = (state) => {
+  return {project: state.currentProject}
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setCurrentVideoTime: (time) => dispatch(actions.setCurrentVideoTime(time)),
+    renderNoteForm: () => dispatch(actions.renderNoteForm())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Video)

@@ -1,4 +1,4 @@
-import { SET_CURRENT_PROJECT } from '../types'
+import * as types from '../types'
 
 let initialState = {
   user: {
@@ -28,13 +28,22 @@ let initialState = {
       }
     ],
   },
+  currentDisplay: null,
   currentProject: null,
+  currentVideoTime: null,
+  displayNoteForm: false,
 }
 
 const userReducer = (state = initialState, action) => {
   switch(action.type) {
-    case SET_CURRENT_PROJECT:
+    case types.DISPLAY_PROJECTS:
+      return {}
+    case types.SET_CURRENT_PROJECT:
       return {...state, currentProject: action.payload}
+    case types.SET_CURRENT_VIDEO_TIME:
+      return {...state, currentVideoTime: action.payload}
+    case types.RENDER_NOTE_FORM:
+      return {...state, displayNoteForm: true}
     default:
       return state
   }

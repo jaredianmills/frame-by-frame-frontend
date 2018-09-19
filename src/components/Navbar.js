@@ -8,22 +8,11 @@ const Navbar = (props) => {
       <Menu.Item>
         <h1>Frame by Frame</h1>
       </Menu.Item>
-      {/* <Menu.Item>
-        <h1 style={{visibility: "hidden", marginLeft: "10%"}}>.</h1>
-      </Menu.Item> */}
-      {/* <Menu.Item> */}
-      {/* <h1 style={{marginLeft: "50%"}}> */}
-      {/* Welcome {props.user.first_name + " " + props.user.last_name} */}
-      {/* </h1> */}
-      {/* </Menu.Item> */}
       <Menu.Item >
         <Button>Log-in</Button>
       </Menu.Item>
       <Menu.Item >
         <Button>New Project</Button>
-      </Menu.Item>
-      <Menu.Item >
-        <Button>Your Projects</Button>
       </Menu.Item>
     </Menu>
   )
