@@ -6,4 +6,6 @@ export const SET_CURRENT_VIDEO_TIME = 'SET_CURRENT_VIDEO_TIME'
 
 export const RENDER_NOTE_FORM = 'RENDER_NOTE_FORM'
 
+export const HIDE_NOTE_FORM = 'HIDE_NOTE_FORM'
+
 export const ADD_NOTE = 'ADD_NOTE'

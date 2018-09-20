@@ -27,6 +27,13 @@ export function renderNoteForm() {
   }
 }
 
+export function hideNoteForm() {
+  return {
+    type: types.HIDE_NOTE_FORM,
+    payload: false
+  }
+}
+
 export function addNote(note) {
   return {
     type: types.ADD_NOTE,

@@ -21,7 +21,9 @@ class NoteForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    this.props.hideNoteForm()
     this.props.addNote(this.state)
+    this.setState({...this.state, content: ''})
   }
 
   render() {
@@ -39,7 +41,9 @@ class NoteForm extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addNote: (note) => {dispatch(actions.addNote(note))}
+    addNote: (note) => {dispatch(actions.addNote(note))},
+    hideNoteForm: () => {dispatch(actions.hideNoteForm())},
+    // hideNoteForm: () => {dispatch(actions.hideNoteForm())}
   }
 }
 
