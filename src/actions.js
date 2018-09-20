@@ -70,3 +70,10 @@ export function addNote(note) {
     payload: note
   }
 }
+
+export function setVideoPlayTime(time) {
+  return {
+    type: types.SET_VIDEO_PLAY_TIME,
+    payload: time
+  }
+}

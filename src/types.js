@@ -13,3 +13,5 @@ export const ADD_NOTE = 'ADD_NOTE'
 export const LOGIN_USER = 'LOGIN_USER'
 
 export const FETCH_PROJECT = 'FETCH_PROJECT'
+
+export const SET_VIDEO_PLAY_TIME = 'SET_VIDEO_PLAY_TIME'

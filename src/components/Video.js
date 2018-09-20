@@ -36,13 +36,20 @@ class Video extends Component {
   //
   // }
 
+  componentDidUpdate = () => {
+    this.refs.player.seek(this.props.videoPlayTime)
+    console.log(this.props.videoPlayTime);
+  }
+
     render() {
+      console.log(this.props);
       return(
         <div style={{width: "50%", height: 'auto', margin: '1%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
           <Player
             ref="player"
             src={this.props.project.video_url}
             autoPlay={false}
+            startTime={this.props.videoPlayTime}
           >
             <BigPlayButton position="center" />
             <ControlBar autoHide={false}>
@@ -64,7 +71,10 @@ class Video extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {project: state.currentProject}
+  return {
+    project: state.currentProject,
+    videoPlayTime: state.videoPlayTime
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

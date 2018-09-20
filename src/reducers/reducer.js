@@ -40,9 +40,10 @@ let initialState = {
   currentProject: null,
   currentVideoTime: null,
   displayNoteForm: false,
+  videoPlayTime: 0
 }
 
-const userReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch(action.type) {
     case types.LOGIN_USER:
       return {...state, user: action.payload}
@@ -61,9 +62,12 @@ const userReducer = (state = initialState, action) => {
     case types.ADD_NOTE:
       console.log(action.payload);
       return {...state, currentProject: {...state.currentProject, notes: [...state.currentProject.notes, action.payload]}}
+    case types.SET_VIDEO_PLAY_TIME:
+      console.log('video play time was set');
+      return {...state, videoPlayTime: action.payload}
     default:
       return state
   }
 }
 
-export default userReducer
+export default reducer
