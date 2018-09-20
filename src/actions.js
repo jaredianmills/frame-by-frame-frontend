@@ -26,3 +26,10 @@ export function renderNoteForm() {
     payload: true
   }
 }
+
+export function addNote(note) {
+  return {
+    type: types.ADD_NOTE,
+    payload: note
+  }
+}

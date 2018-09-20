@@ -44,6 +44,9 @@ const userReducer = (state = initialState, action) => {
       return {...state, currentVideoTime: action.payload}
     case types.RENDER_NOTE_FORM:
       return {...state, displayNoteForm: true}
+    case types.ADD_NOTE:
+      console.log(action.payload);
+      return {...state, currentProject: {...state.currentProject, notes: [...state.currentProject.notes, action.payload]}}
     default:
       return state
   }

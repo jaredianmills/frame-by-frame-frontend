@@ -19,9 +19,9 @@ class Video extends Component {
   addNote = () => {
     const { player } = this.refs.player.getState()
     this.refs.player.pause()
-    this.props.setCurrentVideoTime(player.currentTime)
+    let timecode = player.currentTime
+    this.props.setCurrentVideoTime(timecode)
     this.props.renderNoteForm()
-
   }
 
   // goToTime = () => {
@@ -37,9 +37,8 @@ class Video extends Component {
   // }
 
     render() {
-      // console.log(this.props);
       return(
-        <div style={{width: "50%", height: 'auto', margin: '1%'}}>
+        <div style={{width: "50%", height: 'auto', margin: '1%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
           <Player
             ref="player"
             src={this.props.project.video_url}
@@ -75,4 +74,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Video)
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Video)
