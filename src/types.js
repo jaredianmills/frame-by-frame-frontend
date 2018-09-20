@@ -9,3 +9,7 @@ export const RENDER_NOTE_FORM = 'RENDER_NOTE_FORM'
 export const HIDE_NOTE_FORM = 'HIDE_NOTE_FORM'
 
 export const ADD_NOTE = 'ADD_NOTE'
+
+export const LOGIN_USER = 'LOGIN_USER'
+
+export const FETCH_PROJECT = 'FETCH_PROJECT'

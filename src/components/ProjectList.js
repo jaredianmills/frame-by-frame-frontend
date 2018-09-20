@@ -1,14 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import ProjectCard from './ProjectCard.js'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
-import Project from './Project'
 import * as actions from '../actions'
 
 const ProjectList = (props) => {
-
-
   return (
     <div className="sidenav">
       <h1 style={{textAlign: 'center'}}>Projects</h1>
@@ -26,7 +21,6 @@ const ProjectList = (props) => {
 const mapStateToProps = (state) => {
   return {
     projects: state.user.projects,
-    // match: state.match
   }
 }
 
@@ -38,7 +32,3 @@ const mapDispatchToProps = (dispatch) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectList)
-
-
-// {/* <Route exact path={`${props.match.url}/:${project.id}`} component={Project}/> */}
-// <Route path={`${props.match.url}/:${props.project.id}`} render={(routerProps) => <Project {...routerProps}/>}/>

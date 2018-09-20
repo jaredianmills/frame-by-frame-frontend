@@ -8,16 +8,17 @@ import Navbar from './components/Navbar'
 import ProjectList from './components/ProjectList'
 import Project from './components/Project'
 import NoteForm from './components/NoteForm'
+import LoginForm from './components/LoginForm'
 
 
 class App extends Component {
   render() {
-    // console.log(this.props.state);
     return (
         <React.Fragment>
           <Navbar style={{zIndex: 10}}/>
-          <ProjectList style={{width: "20%", height: "100%"}}/>
-          {this.props.state.currentProject ? <Project /> : null}
+          {this.props.state.user ? null : <LoginForm />}
+          {this.props.state.user ? <ProjectList style={{width: "20%", height: "100%"}}/> : null}
+          {this.props.state.currentProject ? <Project id={this.props.state.currentProject.id}/> : null}
         </React.Fragment>
 
     );
