@@ -15,18 +15,18 @@ import NotFound from './components/NotFound'
 
 class App extends Component {
   render() {
+    console.log(this.props.state);
     return (
-        <React.Fragment>
-          <Navbar style={{zIndex: 10}}/>
-          <Switch>
-            <Route exact path="/" render={this.props.state.loggedIn ? () => <Redirect to="/profile" /> : () => <Redirect to="/login" />} />
-            <Route exact path="/projects" component={ProjectList} />
-            <Route exact path="/login" component={LoginForm} />
-            <Route component={NotFound} />
-          </Switch>
-          {this.props.state.currentProject ? <Project /> : null}
-        </React.Fragment>
-
+      <React.Fragment>
+        <Navbar style={{zIndex: 10}}/>
+        <Switch>
+          <Route exact path="/" render={ () => <Redirect to="/projects" /> } />
+          <Route exact path="/projects" component={ProjectList} />
+          <Route exact path="/login" component={LoginForm} />
+          <Route component={NotFound} />
+        </Switch>
+        {this.props.state.currentProject ? <Project /> : null}
+      </React.Fragment>
     );
   }
 }

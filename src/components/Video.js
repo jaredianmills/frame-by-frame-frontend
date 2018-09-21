@@ -39,10 +39,10 @@ class Video extends Component {
   componentDidUpdate = () => {
     this.refs.player.seek(this.props.videoPlayTime)
   }
-
+  
     render() {
       return(
-        <div style={{width: "50%", height: 'auto', margin: '1%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
+        <div style={{width: "50%", height: 'auto', marginLeft: '3%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
           <Player
             ref="player"
             src={this.props.project.video_url}

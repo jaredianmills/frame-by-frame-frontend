@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Menu } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom';
 import * as actions from '../actions'
 import withAuth from '../hoc/withAuth'
 import Project from './Project'
@@ -16,6 +17,7 @@ class ProjectList extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="sidenav">
         <h1 style={{textAlign: 'center'}}>Projects</h1>
@@ -23,6 +25,7 @@ class ProjectList extends Component {
           {this.props.user.projects.map(project => {
             return (
               <Menu.Item style={{textAlign: 'center'}} key={project.id} name={project.title} onClick={() => this.handleProjectSelect(project)}/>
+               // <Link key={project.id} to={`/projects/${project.id}`}>{project.title}</Link>
             )
           })}
         </Menu>
