@@ -11,11 +11,11 @@ class Project extends Component {
   }
 
   componentDidMount = () => {
-    this.props.fetchProject(this.props.currentProject.id, process.env.REACT_APP_PROJECTS_API)
+    this.props.fetchProject(this.props.currentProject.id)
   }
 
   render() {
-
+    console.log(this.props);
     return (
       <div style={{marginLeft: '20%'}}>
         {this.props.currentProject.notes ? <NoteList notes={this.props.currentProject.notes}/> : null}
@@ -32,7 +32,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchProject: (id, API) => {dispatch(actions.fetchProject(id, API))}
+    fetchProject: (id) => {dispatch(actions.fetchProject(id))}
   }
 }
 

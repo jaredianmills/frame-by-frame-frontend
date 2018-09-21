@@ -38,11 +38,9 @@ class Video extends Component {
 
   componentDidUpdate = () => {
     this.refs.player.seek(this.props.videoPlayTime)
-    console.log(this.props.videoPlayTime);
   }
 
     render() {
-      console.log(this.props);
       return(
         <div style={{width: "50%", height: 'auto', margin: '1%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
           <Player

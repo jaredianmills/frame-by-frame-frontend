@@ -40,7 +40,7 @@ let initialState = {
   authenticatingUser: false,
   failedLogin: false,
   error: null,
-  currentDisplay: null,
+  // currentDisplay: null,
   currentProject: null,
   currentVideoTime: null,
   displayNoteForm: false,
@@ -58,13 +58,17 @@ const reducer = (state = initialState, action) => {
     case 'AUTHENTICATED_USER':
       return { ...state, authenticatingUser: false }
 
-    case 'FAILED_LOGIN': 
+    case 'FAILED_LOGIN':
       return {
         ...state,
         failedLogin: true,
         error: action.payload,
         authenticatingUser: false
       }
+
+    case types.LOG_OUT:
+      localStorage.clear()
+      return {...state, user: null, loggedIn: false, currentProject: null, currentProject: null, displayNoteForm: false, videoPlayTime: 0}
 
     case types.FETCH_PROJECT:
       return {...state, currentProject: action.payload}

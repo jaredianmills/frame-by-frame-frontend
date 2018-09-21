@@ -15,3 +15,5 @@ export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 export const FETCH_PROJECT = 'FETCH_PROJECT'
 
 export const SET_VIDEO_PLAY_TIME = 'SET_VIDEO_PLAY_TIME'
+
+export const LOG_OUT = 'LOG_OUT'

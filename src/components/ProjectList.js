@@ -1,27 +1,38 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Menu } from 'semantic-ui-react'
+import { Redirect } from 'react-router'
 import * as actions from '../actions'
+import withAuth from '../hoc/withAuth'
+import Project from './Project'
 
-const ProjectList = (props) => {
-  return (
-    <div className="sidenav">
-      <h1 style={{textAlign: 'center'}}>Projects</h1>
-      <Menu inverted pointing vertical>
-        {props.projects.map(project => {
-          return (
-            <Menu.Item style={{textAlign: 'center'}} key={project.id} name={project.title} match={props.match} onClick={() => props.selectProject(project)}/>
-          )
-        })}
-      </Menu>
-    </div>
-  )
+class ProjectList extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  handleProjectSelect = (project) => {
+    this.props.selectProject(project)
+  }
+
+  render() {
+    return (
+      <div className="sidenav">
+        <h1 style={{textAlign: 'center'}}>Projects</h1>
+        <Menu inverted pointing vertical>
+          {this.props.user.projects.map(project => {
+            return (
+              <Menu.Item style={{textAlign: 'center'}} key={project.id} name={project.title} onClick={() => this.handleProjectSelect(project)}/>
+            )
+          })}
+        </Menu>
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
-  return {
-    projects: state.user.projects,
-  }
+  return state
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -31,4 +42,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectList)
+export default withAuth(connect(mapStateToProps, mapDispatchToProps)(ProjectList))
