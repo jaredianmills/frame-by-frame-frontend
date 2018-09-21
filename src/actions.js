@@ -1,4 +1,6 @@
 import * as types from './types'
+import React from 'react'
+import { Redirect } from 'react-router'
 
 require('dotenv').config()
 
@@ -8,7 +10,7 @@ export function loginUser(userLogin) {
     return fetch(process.env.REACT_APP_USERS_API)
       .then(response => response.json())
       .then(users => users.find(user => user.email === userLogin.email))
-      .then(user => dispatch({ type: types.LOGIN_USER, payload: user }));
+      .then(user => dispatch({ type: types.SET_CURRENT_USER, payload: user }))
   }
 }
 

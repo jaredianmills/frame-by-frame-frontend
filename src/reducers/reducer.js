@@ -36,6 +36,10 @@ import * as types from '../types'
 
 let initialState = {
   user: null,
+  loggedIn: false,
+  authenticatingUser: false,
+  failedLogin: false,
+  error: null,
   currentDisplay: null,
   currentProject: null,
   currentVideoTime: null,
@@ -45,26 +49,47 @@ let initialState = {
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
-    case types.LOGIN_USER:
-      return {...state, user: action.payload}
+    case types.SET_CURRENT_USER:
+      return { ...state, user: action.payload, loggedIn: true, authenticatingUser: false }
+
+    case 'AUTHENTICATING_USER':
+      return { ...state, authenticatingUser: true }
+
+    case 'AUTHENTICATED_USER':
+      return { ...state, authenticatingUser: false }
+
+    case 'FAILED_LOGIN': 
+      return {
+        ...state,
+        failedLogin: true,
+        error: action.payload,
+        authenticatingUser: false
+      }
+
     case types.FETCH_PROJECT:
       return {...state, currentProject: action.payload}
-    case types.DISPLAY_PROJECTS:
-      return {}
+
+    // case types.DISPLAY_PROJECTS:
+      // return {}
+
     case types.SET_CURRENT_PROJECT:
       return {...state, currentProject: action.payload}
+
     case types.SET_CURRENT_VIDEO_TIME:
       return {...state, currentVideoTime: action.payload}
+
     case types.RENDER_NOTE_FORM:
       return {...state, displayNoteForm: true}
+
     case types.HIDE_NOTE_FORM:
       return {...state, displayNoteForm: false}
+
     case types.ADD_NOTE:
-      console.log(action.payload);
       return {...state, currentProject: {...state.currentProject, notes: [...state.currentProject.notes, action.payload]}}
+
     case types.SET_VIDEO_PLAY_TIME:
-      console.log('video play time was set');
       return {...state, videoPlayTime: action.payload}
+
     default:
       return state
   }

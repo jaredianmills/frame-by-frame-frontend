@@ -10,7 +10,7 @@ export const HIDE_NOTE_FORM = 'HIDE_NOTE_FORM'
 
 export const ADD_NOTE = 'ADD_NOTE'
 
-export const LOGIN_USER = 'LOGIN_USER'
+export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 
 export const FETCH_PROJECT = 'FETCH_PROJECT'
 

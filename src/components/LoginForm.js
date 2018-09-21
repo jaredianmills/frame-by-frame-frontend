@@ -18,6 +18,7 @@ class LoginForm extends Component {
   }
 
   handleSubmit = (event) => {
+    console.log(this.state);
     event.preventDefault()
     this.props.loginUser(this.state, process.env.REACT_APP_USERS_API)
   }
