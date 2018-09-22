@@ -7,7 +7,7 @@ const NoteList = (props) => {
   return (
     <div className='notelist'>
       <Card.Group>
-      {props.notes.map(note => <Note key={note.id} note={note}/>)}
+      {props.notes.sort((a, b) => a.timecode - b.timecode).map(note => <Note key={note.id} note={note}/>)}
     </Card.Group>
     </div>
   )
