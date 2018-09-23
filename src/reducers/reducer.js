@@ -68,7 +68,7 @@ const reducer = (state = initialState, action) => {
 
     case types.LOG_OUT:
       localStorage.clear()
-      return {...state, user: null, loggedIn: false, currentProject: null, currentProject: null, displayNoteForm: false, videoPlayTime: 0}
+      return {...state, user: null, loggedIn: false, currentProject: null, displayNoteForm: false, videoPlayTime: 0}
 
     case types.FETCH_PROJECT:
       return {...state, currentProject: action.payload}

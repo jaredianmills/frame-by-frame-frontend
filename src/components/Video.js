@@ -12,9 +12,6 @@ import { Player,
 } from 'video-react'
 
 class Video extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   addNote = () => {
     const { player } = this.refs.player.getState()
@@ -39,7 +36,7 @@ class Video extends Component {
   componentDidUpdate = () => {
     this.refs.player.seek(this.props.videoPlayTime)
   }
-  
+
     render() {
       return(
         <div style={{width: "50%", height: 'auto', marginLeft: '3%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>

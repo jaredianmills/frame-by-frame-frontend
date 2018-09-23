@@ -1,8 +1,34 @@
 import * as types from './types'
-import React from 'react'
-import { Redirect } from 'react-router'
+// import React from 'react'
+// import { Redirect } from 'react-router'
 
 require('dotenv').config()
+
+export function createUser(userLogin) {
+  return (dispatch) => {
+    let configObj = {method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({user: userLogin})
+    }
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/users`, configObj)
+      .then(response => {
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw response
+        }
+      })
+      .then(JSONResponse => {
+        console.log('JSONResponse', JSONResponse);
+        localStorage.setItem('jwt', JSONResponse.jwt)
+        dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
+      })
+      .catch(r => r.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.message })))
+  }
+}
 
 
 export function loginUser(userLogin) {
