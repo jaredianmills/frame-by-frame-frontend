@@ -49,7 +49,6 @@ class NewProjectForm extends Component {
   };
 
   handleFileUpload = event => {
-    console.log(event.nativeEvent, event.target.files, event.target.files[0]);
     this.setState({
       video: event.target.files[0],
     });

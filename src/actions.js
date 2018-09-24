@@ -108,7 +108,7 @@ export function displayProjects() {
   }
 }
 
-export function selectProjectAction(project) {
+export function selectProject(project) {
   return {
     type: types.SET_CURRENT_PROJECT,
     payload: project
@@ -157,5 +157,11 @@ export function setVideoPlayTime(time) {
   return {
     type: types.SET_VIDEO_PLAY_TIME,
     payload: time
+  }
+}
+
+export function renderNewProjectForm() {
+  return {
+    type: types.RENDER_NEW_PROJECT_FORM
   }
 }

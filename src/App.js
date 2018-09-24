@@ -13,6 +13,7 @@ import LoginForm from './components/LoginForm'
 import NotFound from './components/NotFound'
 import SignupForm from './components/SignupForm'
 import NewProjectForm from './components/NewProjectForm'
+import ProjectPage from './components/ProjectPage'
 
 
 class App extends Component {
@@ -22,7 +23,7 @@ class App extends Component {
         <Navbar style={{zIndex: 10}}/>
         <Switch>
           <Route exact path="/" render={ () => <Redirect to="/projects" /> } />
-          <Route path="/projects" render={routerProps => <ProjectList {...routerProps} />} />
+          <Route exact path="/projects" component={ProjectPage} />
           <Route exact path="/newproject" component={NewProjectForm}/>}/>
           <Route path={`/projects/:projectId`} component={Project}/>
           <Route exact path="/login" component={LoginForm} />
