@@ -13,9 +13,7 @@ const Navbar = (props) => {
         {props.loggedIn ? <Button onClick={props.logOut}>Log Out</Button> : null}
         {!props.loggedIn ? <Button>Log In</Button> : null}
       </Menu.Item>
-      <Menu.Item >
-        <Button>New Project</Button>
-      </Menu.Item>
+        {props.loggedIn ? <Menu.Item ><Button onClick={props.renderNewProjectForm}>New Project</Button></Menu.Item> : null}
     </Menu>
   )
 }
@@ -26,7 +24,8 @@ function mapStateToProps(state) {
 
 function mapDispatchtoProps(dispatch) {
   return {
-    logOut: () => {dispatch(actions.logOut())}
+    logOut: () => {dispatch(actions.logOut())},
+    renderNewProjectForm: () => {dispatch(actions.renderNewProjectForm())}
   }
 }
 

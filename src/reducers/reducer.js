@@ -42,9 +42,11 @@ let initialState = {
   error: null,
   // currentDisplay: null,
   currentProject: null,
+  currentProjectNotes: [],
   currentVideoTime: null,
   displayNoteForm: false,
-  videoPlayTime: 0
+  videoPlayTime: 0,
+  displayNewProjectForm: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -71,13 +73,13 @@ const reducer = (state = initialState, action) => {
       return {...state, user: null, loggedIn: false, currentProject: null, displayNoteForm: false, videoPlayTime: 0}
 
     case types.FETCH_PROJECT:
-      return {...state, currentProject: action.payload}
+      return {...state, currentProject: action.payload, currentProjectNotes: action.payload.notes}
 
     // case types.DISPLAY_PROJECTS:
       // return {}
 
     case types.SET_CURRENT_PROJECT:
-      return {...state, currentProject: action.payload}
+      return {...state, currentProject: action.payload, currentProjectNotes: action.payload.notes}
 
     case types.SET_CURRENT_VIDEO_TIME:
       return {...state, currentVideoTime: action.payload}
@@ -89,10 +91,13 @@ const reducer = (state = initialState, action) => {
       return {...state, displayNoteForm: false}
 
     case types.ADD_NOTE:
-      return {...state, currentProject: {...state.currentProject, notes: [...state.currentProject.notes, action.payload]}}
+      return {...state, currentProjectNotes: [...state.currentProjectNotes, action.payload]}
 
     case types.SET_VIDEO_PLAY_TIME:
       return {...state, videoPlayTime: action.payload}
+
+    case types.RENDER_NEW_PROJECT_FORM:
+      return {...state, displayNewProjectForm: true, currentProject: null}
 
     default:
       return state

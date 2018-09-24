@@ -42,7 +42,7 @@ class Video extends Component {
         <div style={{width: "50%", height: 'auto', marginLeft: '3%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
           <Player
             ref="player"
-            src={this.props.project.video_url}
+            src='https://s3.us-east-2.amazonaws.com/flatironmod5project/IMG_4482.MOV'
             autoPlay={false}
             startTime={this.props.videoPlayTime}
           >
