@@ -21,6 +21,11 @@ class Video extends Component {
     this.props.renderNoteForm()
   }
 
+  // addUser = () => {
+  //   const { player } = this.refs.player.getState()
+  //   this.refs.player.pause()
+  // }
+
   // goToTime = () => {
   //   const { player } = this.refs.player.getState();
   //   this.refs.player.seek(7.2501)
@@ -58,7 +63,8 @@ class Video extends Component {
               />
             </ControlBar>
           </Player>
-          <Button style={{margin: '1%'}}onClick={this.addNote}>Add a Note</Button>
+          <Button style={{margin: '1%'}} onClick={this.addNote}>Add a Note</Button>
+          <Button style={{margin: '1%'}} onClick={this.addUser}>Add User to Project</Button>
           {/* <button onClick={this.goToTime}>go to time</button> */}
           {/* <button onClick={this.makeComment}>make comment</button>  */}
         </div>
@@ -78,6 +84,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setCurrentVideoTime: (time) => dispatch(actions.setCurrentVideoTime(time)),
     renderNoteForm: () => dispatch(actions.renderNoteForm()),
+    // addUserToProject: () => dispatch(actions.addUserToProject())
   }
 }
 
