@@ -4,10 +4,11 @@ import { Card } from 'semantic-ui-react'
 import Note from './Note'
 
 const NoteList = (props) => {
+  console.log(props);
   return (
     <div className='notelist'>
       <Card.Group>
-      {props.notes.sort((a, b) => a.timecode - b.timecode).map(note => <Note key={note.id} note={note}/>)}
+      {props.notes ? props.notes.sort((a, b) => a.timecode - b.timecode).map(note => <Note key={note.id} note={note}/>) : null}
     </Card.Group>
     </div>
   )

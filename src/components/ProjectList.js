@@ -25,11 +25,12 @@ class ProjectList extends Component {
         {/* <Menu inverted pointing vertical> */}
           {this.props.user.projects.map(project => {
             return (
-              <React.Fragment>
-                <Button style={{textAlign: 'center'}} key={project.id} name={project.title} onClick={() => this.handleProjectSelect(project)}>
+              <React.Fragment key={project.id}>
+                <Button style={{textAlign: 'center'}} name={project.title} onClick={() => this.handleProjectSelect(project)}>
                   {project.title}
                 </Button>
-                {/* <Link to={`projects/${project.id}`}>{project.title}</Link> */}
+                <br/>
+                <br/>
               </React.Fragment>
             )
           })}

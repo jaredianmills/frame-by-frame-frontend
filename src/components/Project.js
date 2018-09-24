@@ -15,10 +15,11 @@ class Project extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div style={{marginLeft: '20%', marginTop: '1%'}}>
-        {this.props.currentProject.notes ? <NoteList notes={this.props.currentProject.notes}/> : null}
+        <NoteList notes={this.props.currentProject.notes} />
+        {/* {this.props.currentProject.notes ? <NoteList notes={this.props.currentProject.notes}/> : null} */}
         <Video />
         {this.props.displayNoteForm ? <NoteForm currentVideoTime={this.props.currentVideoTime}/> : null}
       </div>

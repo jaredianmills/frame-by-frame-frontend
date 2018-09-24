@@ -26,7 +26,7 @@ class NoteForm extends Component {
   }
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     return (
       <div style={{width: "50%", height: 'auto', margin: '1%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
         <form onSubmit={this.handleSubmit}>

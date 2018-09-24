@@ -12,6 +12,7 @@ import NoteForm from './components/NoteForm'
 import LoginForm from './components/LoginForm'
 import NotFound from './components/NotFound'
 import SignupForm from './components/SignupForm'
+import NewProjectForm from './components/NewProjectForm'
 
 
 class App extends Component {
@@ -20,8 +21,9 @@ class App extends Component {
       <React.Fragment>
         <Navbar style={{zIndex: 10}}/>
         <Switch>
-          {/* <Route exact path="/:filter?" render={ () => <Redirect to="/projects" /> } /> */}
+          <Route exact path="/" render={ () => <Redirect to="/projects" /> } />
           <Route path="/projects" render={routerProps => <ProjectList {...routerProps} />} />
+          <Route exact path="/newproject" component={NewProjectForm}/>}/>
           <Route path={`/projects/:projectId`} component={Project}/>
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/signup" component={SignupForm} />

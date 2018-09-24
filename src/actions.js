@@ -96,6 +96,7 @@ export function fetchProject(id) {
       headers: {Authorization: `Bearer ${localStorage.getItem('jwt')}`}
     })
       .then(response => response.json())
+      // .then(res => console.log(res))
       .then(project => dispatch({type: types.FETCH_PROJECT, payload: project}))
   }
 }
@@ -140,6 +141,7 @@ export function postNote(note) {
     let configObj = {method: "POST", headers: {"Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem('jwt')}`}, body: JSON.stringify(note)}
     return fetch(process.env.REACT_APP_NOTES_API, configObj)
       .then(response => response.json())
+      // .then(json => console.log(json))
       .then(note => dispatch({ type: types.ADD_NOTE, payload: note }))
   }
 }
