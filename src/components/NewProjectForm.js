@@ -1,12 +1,4 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
-
-class NewProjectForm extends Component {
-
-}
-
-export default NewProjectForm
-=======
 import { connect } from 'react-redux'
 import withAuth from '../hoc/withAuth'
 import { Player,
@@ -89,4 +81,3 @@ const mapStateToProps = (state) => {
 }
 
 export default (connect(mapStateToProps)(NewProjectForm))
->>>>>>> add-ability-to-upload-videos
