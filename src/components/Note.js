@@ -28,9 +28,13 @@ class Note extends Component {
     return `${hours}:${minutes}:${seconds}`
   }
 
+  handleClick = () => {
+    this.props.setVideoPlayTime(this.props.note.timecode)
+  }
+
   render() {
     return (
-      <Card onClick={() => this.props.setVideoPlayTime(this.props.note.timecode)} style={{marginTop: '1%', marginLeft: "20%", marginBottom: '1%'}}>
+      <Card onClick={this.handleClick} style={{marginTop: '1%', marginLeft: "20%", marginBottom: '1%'}}>
         <Card.Content>
           <Card.Header>{`${this.props.note.user.first_name} ${this.props.note.user.last_name}`} says</Card.Header>
           <Card.Description>{this.props.note.content}</Card.Description>

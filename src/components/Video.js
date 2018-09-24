@@ -38,11 +38,12 @@ class Video extends Component {
   }
 
     render() {
+      console.log(this.props)
       return(
         <div style={{width: "50%", height: 'auto', marginLeft: '3%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
           <Player
             ref="player"
-            src='https://s3.us-east-2.amazonaws.com/flatironmod5project/IMG_4482.MOV'
+            src={this.props.project.video_url}
             autoPlay={false}
             startTime={this.props.videoPlayTime}
           >
@@ -68,14 +69,15 @@ class Video extends Component {
 const mapStateToProps = (state) => {
   return {
     project: state.currentProject,
-    videoPlayTime: state.videoPlayTime
+    videoPlayTime: state.videoPlayTime,
+    noteWasClicked: state.noteWasClicked
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setCurrentVideoTime: (time) => dispatch(actions.setCurrentVideoTime(time)),
-    renderNoteForm: () => dispatch(actions.renderNoteForm())
+    renderNoteForm: () => dispatch(actions.renderNoteForm()),
   }
 }
 

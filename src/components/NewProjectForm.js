@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Form, Button, Label } from 'semantic-ui-react'
 import withAuth from '../hoc/withAuth'
 import { Player,
   ControlBar,
@@ -57,17 +58,41 @@ class NewProjectForm extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="App">
-        <form onSubmit={this.handleSubmit}>
+      <div style={{width: "20%", height: 'auto', marginLeft: '30%', marginTop: '20%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
+        <Form onSubmit={this.handleSubmit}>
           <input
             name="title"
             type="text"
+            placeholder="Project Title"
             value={this.state.title}
             onChange={this.handleChange}
           />
-          <input type="file" onChange={this.handleFileUpload} />
-          <input type="submit" value="Upload" />
-        </form>
+          {/* <input type="file" onChange={this.handleFileUpload} /> */}
+        <br/><br/>
+          <Label
+            as="label"
+            basic
+            htmlFor="upload"
+        >
+            <Button
+                icon="upload"
+                label={{
+                    basic: true,
+                    content: 'Select file(s)'
+                }}
+                labelPosition="right"
+            />
+            <input
+                hidden
+                id="upload"
+                multiple
+                type="file"
+                onChange={this.handleFileUpload}
+            />
+        </Label>
+        <br/><br/>
+        <Form.Button content="Submit" />
+      </Form>
 
 
       </div>
