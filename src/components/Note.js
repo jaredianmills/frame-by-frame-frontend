@@ -6,10 +6,17 @@ import * as actions from '../actions'
 class Note extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      numberOfComments: this.props.note.comments.length
+    }
   }
 
   componentDidUpdate = () => {
-    console.log('updated');
+    // console.log(this.props.numberOfComments);
+    // if (this.props.note.comments.length > this.state.numberOfComments) {
+    //   this.setState({numberOfComments: this.props.note.comments.length})
+    // }
   }
 
   displayTimecode = () => {
@@ -45,7 +52,7 @@ class Note extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <Card style={{margin: '1%', width: '100%'}}>
         <Card.Content>
@@ -54,12 +61,16 @@ class Note extends Component {
           <Card.Meta>Timecode: {this.displayTimecode()}</Card.Meta>
           <br/>
           <Button onClick={this.goToNote}>Go to Note</Button>
-          <Button onClick={this.viewComments}>Comments ({this.props.note.comments.length})</Button>
+          <Button onClick={this.viewComments}>Comments ({this.props.numberOfComments})</Button>
           <Button onClick={this.markAsComplete}>Complete</Button>
         </Card.Content>
       </Card>
     )
   }
+}
+
+const mapStateToProps = (state) => {
+  return state
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -69,4 +80,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Note)
+export default connect(mapStateToProps, mapDispatchToProps)(Note)
