@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Form, Message, TextArea } from 'semantic-ui-react'
+import { Button, Form, Message, TextArea, Header, Modal } from 'semantic-ui-react'
 import * as actions from '../actions'
 
 class NoteForm extends Component {
@@ -49,15 +49,22 @@ class NoteForm extends Component {
   render() {
     console.log(this.props);
     return (
-      <div style={{width: "50%", height: 'auto', marginLeft: '3%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
-        <Button style={{float: 'left'}} onClick={this.props.hideNoteForm}>x</Button>
-        <h3 style={{marginLeft: '38%'}}>Add a New Note</h3>
-        <h5 style={{textAlign: 'center'}}>Timecode: {this.displayTimecode()}</h5>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Field control={TextArea} name='content' placeholder='Add new note' value={this.state.note} onChange={this.handleChange} />
-          <Button>Submit</Button>
-        </Form>
-      </div>
+      // <div style={{width: "50%", height: 'auto', marginLeft: '3%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
+      // <div>
+      <Modal open={this.props.displayNoteForm}>
+        <Button style={{float: 'right'}} onClick={this.props.hideNoteForm}>x</Button>
+        <Modal.Content>
+          {/* <h3 style={{marginLeft: '38%'}}>Add a New Note</h3> */}
+          <Modal.Header><h1>Add a New Note</h1></Modal.Header>
+          <h5 style={{textAlign: 'center'}}>Timecode: {this.displayTimecode()}</h5>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Field control={TextArea} name='content' placeholder='Add new note' value={this.state.note} onChange={this.handleChange} />
+            <Button>Submit</Button>
+          </Form>
+        </Modal.Content>
+      </Modal>
+      // {/* </div> */}
+      // {/* </div> */}
     )
   }
 }
