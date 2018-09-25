@@ -32,9 +32,8 @@ class Video extends Component {
   }
 
     render() {
-      console.log(this.props)
       return(
-        <div style={{width: "50%", height: 'auto', marginLeft: '3%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
+        <div style={{width: "60%", height: 'auto', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
           <Player
             ref="player"
             src={this.props.project.video_url}

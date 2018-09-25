@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 import * as actions from '../actions'
 
 class Note extends Component {
@@ -28,17 +28,29 @@ class Note extends Component {
     return `${hours}:${minutes}:${seconds}`
   }
 
-  handleClick = () => {
+  goToNote = () => {
     this.props.setVideoPlayTime(this.props.note.timecode)
+  }
+
+  viewComments = () => {
+    this.props.showComments(this.props.note)
+  }
+
+  markAsComplete = () => {
+    console.log(`Note ${this.props.note.id} is complete`)
   }
 
   render() {
     return (
-      <Card onClick={this.handleClick} style={{margin: '1%', width: '100%'}}>
+      <Card style={{margin: '1%', width: '100%'}}>
         <Card.Content>
           <Card.Header>{`${this.props.note.user.first_name} ${this.props.note.user.last_name}`} says</Card.Header>
           <Card.Description>{this.props.note.content}</Card.Description>
           <Card.Meta>Timecode: {this.displayTimecode()}</Card.Meta>
+          <br/>
+          <Button onClick={this.goToNote}>Go to Note</Button>
+          <Button onClick={this.viewComments}>Comments ({this.props.note.comments.length})</Button>
+          <Button onClick={this.markAsComplete}>Complete</Button>
         </Card.Content>
       </Card>
     )
@@ -48,7 +60,8 @@ class Note extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setVideoPlayTime: (time) => {dispatch(actions.setVideoPlayTime(time))}
+    setVideoPlayTime: (time) => {dispatch(actions.setVideoPlayTime(time))},
+    showComments: (note) => {dispatch(actions.showComments(note))}
   }
 }
 

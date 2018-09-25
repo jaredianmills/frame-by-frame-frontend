@@ -24,7 +24,6 @@ class AddUserToProjectForm extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       // <div style={{width: "50%", height: 'auto', marginLeft: '3%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
       <Modal open={this.props.displayAddUserToProjectForm}>

@@ -48,7 +48,10 @@ let initialState = {
   displayAddUserToProjectForm: false,
   videoPlayTime: 0,
   noteWasClicked: false,
-  displayNewProjectForm: false
+  displayNewProjectForm: false,
+  displayComments: false,
+  currentNote: null,
+  comments: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -106,11 +109,19 @@ const reducer = (state = initialState, action) => {
       return {...state, error: action.payload}
 
     case types.SUCCESSFULLY_ADDED_USER_TO_PROJECT:
-      return {...state, error: null}
+      return {...state, error: null, displayAddUserToProjectForm: false}
 
     case types.HIDE_ADD_USER_FORM:
       return {...state, displayAddUserToProjectForm: false, error: null}
 
+    case types.SHOW_COMMENTS:
+      return {...state, displayComments: true, currentNote: action.payload}
+
+    case types.HIDE_COMMENTS:
+      return {...state, displayComments: false}
+
+    case types.SET_COMMENTS:
+      return {...state, comments: action.payload}
 
     default:
       return state

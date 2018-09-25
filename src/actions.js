@@ -174,7 +174,7 @@ export function renderAddUserToProjectForm() {
 
 export function addUserToProject(projectId, userEmail) {
   return (dispatch) => {
-    return fetch(`${process.env.REACT_APP_PROJECTS_API}/${projectId}`, {
+   fetch(`${process.env.REACT_APP_PROJECTS_API}/${projectId}`, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -185,17 +185,53 @@ export function addUserToProject(projectId, userEmail) {
     })
     .then(response => {
       if (response.ok) {
-        dispatch({type: types.SUCCESSFULLY_ADDED_USER_TO_PROJECT})
+        return response.json()
       } else {
         throw response
       }
     })
-    .catch(r => r.json()).then(e => dispatch({ type: types.FAILED_TO_ADD_USER_TO_PROJECT, payload: e.errors }))
+    .then(JSONResponse => {
+      dispatch({type: types.SUCCESSFULLY_ADDED_USER_TO_PROJECT})
+    })
+    .catch(r => r.json().then(e => dispatch({ type: types.FAILED_TO_ADD_USER_TO_PROJECT, payload: e.errors })))
+
   }
 }
 
 export function hideAddUserForm() {
   return {
     type: types.HIDE_ADD_USER_FORM
+  }
+}
+
+export function showComments(note) {
+  return {
+    type: types.SHOW_COMMENTS,
+    payload: note
+  }
+}
+
+export function hideComments() {
+  return {
+    type: types.HIDE_COMMENTS
+  }
+}
+
+export function fetchComments(noteId) {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/comments`, {
+      method: 'GET',
+      headers: {Authorization: `Bearer ${localStorage.getItem('jwt')}`}
+    })
+      .then(response => response.json())
+      .then(comments => comments.filter(comment => comment.note_id === noteId))
+      .then(filterdComments => dispatch({type: types.SET_COMMENTS, payload: filterdComments}))
+  }
+}
+
+export function setComments(comments) {
+  return {
+    type: types.SET_COMMENTS,
+    payload: comments
   }
 }

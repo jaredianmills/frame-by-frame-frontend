@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import Note from './Note'
 
 const NoteList = (props) => {
-  console.log(props);
   return (
     <div className='notelist'>
       <h1 style={{textAlign: 'center', textDecoration: 'underline'}}>Notes</h1>

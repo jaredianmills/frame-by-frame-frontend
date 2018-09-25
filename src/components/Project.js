@@ -5,6 +5,7 @@ import NoteForm from './NoteForm'
 import NoteList from './NoteList'
 import NewProjectForm from './NewProjectForm'
 import AddUserToProjectForm from './AddUserToProjectForm'
+import Comments from './Comments'
 import * as actions from '../actions'
 
 class Project extends Component {
@@ -25,6 +26,7 @@ class Project extends Component {
         <Video />
         {this.props.displayNoteForm ? <NoteForm currentVideoTime={this.props.currentVideoTime}/> : null}
         {this.props.displayAddUserToProjectForm ? <AddUserToProjectForm /> : null}
+        {this.props.displayComments ? <Comments /> : null}
       </div>
     )
   }

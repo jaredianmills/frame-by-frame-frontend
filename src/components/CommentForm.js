@@ -1,0 +1,44 @@
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Button, Form } from 'semantic-ui-react'
+
+class CommentForm extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      content: '',
+      user_id: this.props.user.id,
+      note_id: this.props.currentNote.id
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
+  render() {
+    console.log(this.state);
+    return (
+      <Form>
+        <Form.Field>
+          <input name="content" value={this.state.content} placeholder={'Add Comment'} onChange={this.handleChange}/>
+        </Form.Field>
+        <Button type="submit">Post Comment</Button>
+      </Form>
+    )
+  }
+
+}
+
+const mapStateToProps = (state) => {
+  return state
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    
+  }
+}
+
+export default connect(mapStateToProps)(CommentForm)
