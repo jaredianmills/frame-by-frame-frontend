@@ -167,7 +167,6 @@ export function renderNewProjectForm() {
 }
 
 export function renderAddUserToProjectForm() {
-  console.log('here');
   return {
     type: types.RENDER_ADD_USER_TO_PROJECT_FORM
   }
@@ -186,11 +185,17 @@ export function addUserToProject(projectId, userEmail) {
     })
     .then(response => {
       if (response.ok) {
-        return response
+        dispatch({type: types.SUCCESSFULLY_ADDED_USER_TO_PROJECT})
       } else {
         throw response
       }
     })
     .catch(r => r.json()).then(e => dispatch({ type: types.FAILED_TO_ADD_USER_TO_PROJECT, payload: e.errors }))
+  }
+}
+
+export function hideAddUserForm() {
+  return {
+    type: types.HIDE_ADD_USER_FORM
   }
 }

@@ -31,7 +31,7 @@ class SignupForm extends Component {
       return <Redirect to="/projects" />
     } else {
         return (
-          <div style={{width: "20%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue', textAlign: 'center'}}>
+          <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue', textAlign: 'center'}}>
           <h1>Sign Up</h1>
           <Form onSubmit={this.handleSubmit}>
             <input type='text' name='first_name' placeholder='First Name' onChange={this.handleChange}/>

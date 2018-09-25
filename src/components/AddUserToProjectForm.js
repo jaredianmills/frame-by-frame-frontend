@@ -27,7 +27,8 @@ class AddUserToProjectForm extends Component {
     console.log(this.props);
     return (
       <div style={{width: "50%", height: 'auto', marginLeft: '3%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
-        <h3 style={{textAlign: 'center'}}>Add A User to This Project</h3>
+        <Button style={{float: 'left'}} onClick={this.props.hideAddUserForm}>x</Button>
+        <h3 style={{marginLeft: '32%'}}>Add a User to this Project</h3>
         {this.props.error ? <Message style={{textAlign: 'center'}}error header='There was an error processing your request' content={this.props.error} /> : null}
         <Form onSubmit={this.handleSubmit}>
           <input type='text' name='userEmail' placeholder='enter user email address' value={this.state.userEmail} onChange={this.handleChange} />
@@ -46,7 +47,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addUserToProject: (projectId, userEmail) => dispatch(actions.addUserToProject(projectId, userEmail))
+    addUserToProject: (projectId, userEmail) => dispatch(actions.addUserToProject(projectId, userEmail)),
+    hideAddUserForm: () => dispatch(actions.hideAddUserForm())
   }
 }
 

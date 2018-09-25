@@ -54,7 +54,7 @@ let initialState = {
 const reducer = (state = initialState, action) => {
   switch(action.type) {
     case types.SET_CURRENT_USER:
-      return { ...state, user: action.payload, loggedIn: true, authenticatingUser: false }
+      return { ...state, user: action.payload, loggedIn: true, authenticatingUser: false, error: null }
 
     case 'AUTHENTICATING_USER':
       return { ...state, authenticatingUser: true }
@@ -72,7 +72,8 @@ const reducer = (state = initialState, action) => {
 
     case types.LOG_OUT:
       localStorage.clear()
-      return {...state, user: null, loggedIn: false, currentProject: null, displayNoteForm: false, videoPlayTime: 0}
+      // return {...state, user: null, loggedIn: false, currentProject: null, displayNoteForm: false, videoPlayTime: 0}
+      return initialState
 
     case types.FETCH_PROJECT:
       return {...state, currentProject: action.payload, currentProjectNotes: action.payload.notes}
@@ -87,7 +88,7 @@ const reducer = (state = initialState, action) => {
       return {...state, displayNoteForm: true}
 
     case types.HIDE_NOTE_FORM:
-      return {...state, displayNoteForm: false}
+      return {...state, displayNoteForm: false, errors: null}
 
     case types.ADD_NOTE:
       return {...state, currentProjectNotes: [...state.currentProjectNotes, action.payload]}
@@ -103,6 +104,13 @@ const reducer = (state = initialState, action) => {
 
     case types.FAILED_TO_ADD_USER_TO_PROJECT:
       return {...state, error: action.payload}
+
+    case types.SUCCESSFULLY_ADDED_USER_TO_PROJECT:
+      return {...state, error: null}
+
+    case types.HIDE_ADD_USER_FORM:
+      return {...state, displayAddUserToProjectForm: false, error: null}
+
 
     default:
       return state

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Button, Form, Message, TextArea } from 'semantic-ui-react'
 import * as actions from '../actions'
 
 class NoteForm extends Component {
@@ -25,15 +26,37 @@ class NoteForm extends Component {
     this.setState({...this.state, content: ''})
   }
 
+  displayTimecode = () => {
+    let minutes = Math.floor(this.props.currentVideoTime / 60)
+    let hours = Math.floor(minutes / 60)
+    let seconds = Math.round(this.props.currentVideoTime - minutes * 60)
+
+    if (hours > 0) {
+      minutes = minutes - (hours * 60)
+    }
+
+    hours = hours.toString()
+    minutes = minutes.toString()
+    seconds = seconds.toString()
+
+    hours.length > 1 ? hours : hours = "0" + hours
+    minutes.length > 1 ? minutes : minutes = "0" + minutes
+    seconds.length > 1 ? seconds : seconds = "0" + seconds
+
+    return `${hours}:${minutes}:${seconds}`
+  }
+
   render() {
     console.log(this.props);
     return (
-      <div style={{width: "50%", height: 'auto', margin: '1%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
-        <form onSubmit={this.handleSubmit}>
-          <input type='text' name='content' value={this.state.note} onChange={this.handleChange} />
-          <input type='submit' />
-        </form>
-        <h2>{this.props.currentVideoTime}</h2>
+      <div style={{width: "50%", height: 'auto', marginLeft: '3%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
+        <Button style={{float: 'left'}} onClick={this.props.hideNoteForm}>x</Button>
+        <h3 style={{marginLeft: '38%'}}>Add a New Note</h3>
+        <h5 style={{textAlign: 'center'}}>Timecode: {this.displayTimecode()}</h5>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Field control={TextArea} name='content' placeholder='Add new note' value={this.state.note} onChange={this.handleChange} />
+          <Button>Submit</Button>
+        </Form>
       </div>
     )
   }

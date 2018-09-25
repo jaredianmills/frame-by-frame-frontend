@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Message } from 'semantic-ui-react'
 import * as actions from '../actions'
 import { withRouter, Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
@@ -29,8 +29,9 @@ class LoginForm extends Component {
       return <Redirect to="/projects" />
     } else {
         return (
-          <div style={{width: "20%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue', textAlign: 'center'}}>
+          <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue', textAlign: 'center'}}>
           <h1>Login</h1>
+          {this.props.error ? <Message style={{textAlign: 'center'}}error header='There was an error processing your request' content={this.props.error} /> : null}
           <Form onSubmit={this.handleSubmit}>
             <input type='text' name='email' placeholder='email' onChange={this.handleChange}/>
             <br/>
