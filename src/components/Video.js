@@ -21,10 +21,11 @@ class Video extends Component {
     this.props.renderNoteForm()
   }
 
-  // addUser = () => {
-  //   const { player } = this.refs.player.getState()
-  //   this.refs.player.pause()
-  // }
+  addUser = () => {
+    const { player } = this.refs.player.getState()
+    this.refs.player.pause()
+    this.props.renderAddUserToProjectForm()
+  }
 
   // goToTime = () => {
   //   const { player } = this.refs.player.getState();
@@ -84,7 +85,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setCurrentVideoTime: (time) => dispatch(actions.setCurrentVideoTime(time)),
     renderNoteForm: () => dispatch(actions.renderNoteForm()),
-    // addUserToProject: () => dispatch(actions.addUserToProject())
+    renderAddUserToProjectForm: () => dispatch(actions.renderAddUserToProjectForm()),
   }
 }
 

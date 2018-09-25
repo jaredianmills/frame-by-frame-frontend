@@ -165,3 +165,32 @@ export function renderNewProjectForm() {
     type: types.RENDER_NEW_PROJECT_FORM
   }
 }
+
+export function renderAddUserToProjectForm() {
+  console.log('here');
+  return {
+    type: types.RENDER_ADD_USER_TO_PROJECT_FORM
+  }
+}
+
+export function addUserToProject(projectId, userEmail) {
+  return (dispatch) => {
+    return fetch(`${process.env.REACT_APP_PROJECTS_API}/${projectId}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({user_email: userEmail})
+    })
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else {
+        throw response
+      }
+    })
+    .catch(r => r.json().then(e => console.log(e)))
+  }
+}

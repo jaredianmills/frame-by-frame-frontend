@@ -45,6 +45,7 @@ let initialState = {
   currentProjectNotes: [],
   currentVideoTime: null,
   displayNoteForm: false,
+  displayAddUserToProjectForm: false,
   videoPlayTime: 0,
   noteWasClicked: false,
   displayNewProjectForm: false
@@ -100,6 +101,8 @@ const reducer = (state = initialState, action) => {
     case types.RENDER_NEW_PROJECT_FORM:
       return {...state, displayNewProjectForm: true, currentProject: null}
 
+    case types.RENDER_ADD_USER_TO_PROJECT_FORM:
+      return {...state, displayAddUserToProjectForm: true}
     default:
       return state
   }
