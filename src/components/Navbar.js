@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Menu, Button } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
 import * as actions from '../actions'
 
 const Navbar = (props) => {
@@ -10,10 +11,9 @@ const Navbar = (props) => {
       <Menu.Item>
         <h1>Frame by Frame</h1>
       </Menu.Item>
-      <Menu.Item >
-        {props.loggedIn ? <Button onClick={props.logOut}>Log Out</Button> : null}
-        {!props.loggedIn ? <Button>Log In</Button> : null}
-      </Menu.Item>
+        {props.loggedIn ? <Menu.Item >
+          {props.loggedIn ? <Button onClick={props.logOut}>Log Out</Button> : null}
+        </Menu.Item> : null}
         {props.loggedIn ? <Menu.Item ><Button onClick={props.renderNewProjectForm}>New Project</Button></Menu.Item> : null}
         {props.user ? <h1 style={{marginLeft: '2%', marginBottom: '1.25%'}}>Welcome, {props.user.first_name}</h1> : null}
     </Menu>
