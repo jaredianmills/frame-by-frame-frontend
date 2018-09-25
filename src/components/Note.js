@@ -34,7 +34,7 @@ class Note extends Component {
 
   render() {
     return (
-      <Card onClick={this.handleClick} style={{marginTop: '1%', marginLeft: "20%", marginBottom: '1%'}}>
+      <Card onClick={this.handleClick} style={{margin: '1%', width: '100%'}}>
         <Card.Content>
           <Card.Header>{`${this.props.note.user.first_name} ${this.props.note.user.last_name}`} says</Card.Header>
           <Card.Description>{this.props.note.content}</Card.Description>

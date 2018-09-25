@@ -7,8 +7,8 @@ const NoteList = (props) => {
   console.log(props);
   return (
     <div className='notelist'>
-      <h1>Notes</h1>
-      <Card.Group>
+      <h1 style={{textAlign: 'center', textDecoration: 'underline'}}>Notes</h1>
+      <Card.Group style={{marginTop: '1%'}}>
       {props.notes ? props.notes.sort((a, b) => a.timecode - b.timecode).map(note => <Note key={note.id} note={note}/>) : null}
     </Card.Group>
     </div>

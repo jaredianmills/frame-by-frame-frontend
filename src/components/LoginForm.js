@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Form, Button } from 'semantic-ui-react'
 import * as actions from '../actions'
 import { withRouter, Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
 
 class LoginForm extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class LoginForm extends Component {
             <br/>
             <Button type='submit'>Login</Button>
           </Form>
+          <h5>Not a member? <Link to='/signup'>Sign Up</Link></h5>
         </div>
       )
     }

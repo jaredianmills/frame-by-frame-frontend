@@ -27,17 +27,6 @@ class Video extends Component {
     this.props.renderAddUserToProjectForm()
   }
 
-  // goToTime = () => {
-  //   const { player } = this.refs.player.getState();
-  //   this.refs.player.seek(7.2501)
-  // }
-  //
-  // makeComment = () => {
-  //   const { player } = this.refs.player.getState();
-  //   this.refs.player.pause()
-  //   this.props.renderCommentForm(player.currentTime)
-  //
-  // }
 
   componentDidUpdate = () => {
     this.refs.player.seek(this.props.videoPlayTime)
@@ -56,7 +45,7 @@ class Video extends Component {
             <BigPlayButton position="center" />
             <ControlBar autoHide={false}>
               <ReplayControl seconds={10} order={1.1} />
-              <ForwardControl seconds={30} order={2} />
+              <ForwardControl seconds={10} order={2} />
               <CurrentTimeDisplay order={4.1} />
               <PlaybackRateMenuButton
                 rates={[5, 2, 1, 0.5, 0.1]}
@@ -66,8 +55,6 @@ class Video extends Component {
           </Player>
           <Button style={{margin: '1%'}} onClick={this.addNote}>Add a Note</Button>
           <Button style={{margin: '1%'}} onClick={this.addUser}>Add User to Project</Button>
-          {/* <button onClick={this.goToTime}>go to time</button> */}
-          {/* <button onClick={this.makeComment}>make comment</button>  */}
         </div>
       )
     }

@@ -4,6 +4,7 @@ import { Menu, Button } from 'semantic-ui-react'
 import * as actions from '../actions'
 
 const Navbar = (props) => {
+  console.log(props);
   return(
     <Menu style={{backgroundColor: 'lightblue', height: "auto", padding: '1%'}}>
       <Menu.Item>
@@ -14,6 +15,7 @@ const Navbar = (props) => {
         {!props.loggedIn ? <Button>Log In</Button> : null}
       </Menu.Item>
         {props.loggedIn ? <Menu.Item ><Button onClick={props.renderNewProjectForm}>New Project</Button></Menu.Item> : null}
+        {props.user ? <h1 style={{marginLeft: '2%', marginBottom: '1.25%'}}>Welcome, {props.user.first_name}</h1> : null}
     </Menu>
   )
 }
