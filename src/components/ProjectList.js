@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Menu, Button } from 'semantic-ui-react'
-import { Redirect } from 'react-router'
-import { Link, Route } from 'react-router-dom';
+import { Button } from 'semantic-ui-react'
+// import { Redirect } from 'react-router'
+// import { Link, Route } from 'react-router-dom';
 import * as actions from '../actions'
 import withAuth from '../hoc/withAuth'
 import Project from './Project'

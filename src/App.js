@@ -3,7 +3,7 @@ import './App.css';
 import { connect } from 'react-redux'
 // import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
-import store from './store'
+// import store from './store'
 import Navbar from './components/Navbar'
 // import ProjectsPage from './components/ProjectsPage'
 import ProjectList from './components/ProjectList'

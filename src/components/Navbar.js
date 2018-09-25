@@ -1,11 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Menu, Button } from 'semantic-ui-react'
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 import * as actions from '../actions'
 
 const Navbar = (props) => {
-  console.log(props);
   return(
     <Menu style={{backgroundColor: 'lightblue', height: "auto", padding: '1%'}}>
       <Menu.Item>

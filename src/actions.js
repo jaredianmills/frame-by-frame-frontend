@@ -191,6 +191,6 @@ export function addUserToProject(projectId, userEmail) {
         throw response
       }
     })
-    .catch(r => r.json().then(e => console.log(e)))
+    .catch(r => r.json()).then(e => dispatch({ type: types.FAILED_TO_ADD_USER_TO_PROJECT, payload: e.errors }))
   }
 }

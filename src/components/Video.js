@@ -22,7 +22,6 @@ class Video extends Component {
   }
 
   addUser = () => {
-    const { player } = this.refs.player.getState()
     this.refs.player.pause()
     this.props.renderAddUserToProjectForm()
   }

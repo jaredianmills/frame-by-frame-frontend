@@ -77,9 +77,6 @@ const reducer = (state = initialState, action) => {
     case types.FETCH_PROJECT:
       return {...state, currentProject: action.payload, currentProjectNotes: action.payload.notes}
 
-    // case types.DISPLAY_PROJECTS:
-      // return {}
-
     case types.SET_CURRENT_PROJECT:
       return {...state, currentProject: action.payload, currentProjectNotes: action.payload.notes}
 
@@ -103,6 +100,10 @@ const reducer = (state = initialState, action) => {
 
     case types.RENDER_ADD_USER_TO_PROJECT_FORM:
       return {...state, displayAddUserToProjectForm: true}
+
+    case types.FAILED_TO_ADD_USER_TO_PROJECT:
+      return {...state, error: action.payload}
+
     default:
       return state
   }
