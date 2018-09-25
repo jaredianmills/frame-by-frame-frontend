@@ -8,6 +8,10 @@ class Note extends Component {
     super(props)
   }
 
+  componentDidUpdate = () => {
+    console.log('updated');
+  }
+
   displayTimecode = () => {
     let minutes = Math.floor(this.props.note.timecode / 60)
     let hours = Math.floor(minutes / 60)
@@ -41,6 +45,7 @@ class Note extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <Card style={{margin: '1%', width: '100%'}}>
         <Card.Content>
@@ -56,7 +61,6 @@ class Note extends Component {
     )
   }
 }
-
 
 const mapDispatchToProps = (dispatch) => {
   return {

@@ -49,6 +49,7 @@ let initialState = {
   videoPlayTime: 0,
   noteWasClicked: false,
   displayNewProjectForm: false,
+  fetchingComments: false,
   displayComments: false,
   currentNote: null,
   comments: []
@@ -82,7 +83,7 @@ const reducer = (state = initialState, action) => {
       return {...state, currentProject: action.payload, currentProjectNotes: action.payload.notes}
 
     case types.SET_CURRENT_PROJECT:
-      return {...state, currentProject: action.payload, currentProjectNotes: action.payload.notes}
+      return {...state, currentProject: action.payload, currentProjectNotes: action.payload.notes, videoPlayTime: 0}
 
     case types.SET_CURRENT_VIDEO_TIME:
       return {...state, currentVideoTime: action.payload}
@@ -114,14 +115,22 @@ const reducer = (state = initialState, action) => {
     case types.HIDE_ADD_USER_FORM:
       return {...state, displayAddUserToProjectForm: false, error: null}
 
+    case types.FETCHING_COMMENTS:
+      return {...state, fetchingComments: true}
+
     case types.SHOW_COMMENTS:
-      return {...state, displayComments: true, currentNote: action.payload}
+      return {...state, displayComments: true, currentNote: action.payload, fetchingComments: true}
 
     case types.HIDE_COMMENTS:
       return {...state, displayComments: false}
 
     case types.SET_COMMENTS:
-      return {...state, comments: action.payload}
+      return {...state, comments: action.payload, fetchingComments: false}
+
+    case types.ADD_COMMENT:
+      let updatedNote = state.currentProject.notes.find(note => note.id === action.payload.note_id)
+      updatedNote.comments.concat(action.payload)
+      return {...state, comments: [...state.comments, action.payload], currentProject: {...state.currentProject, notes: [...state.currentProject.notes, updatedNote]}}
 
     default:
       return state

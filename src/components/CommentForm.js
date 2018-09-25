@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Form } from 'semantic-ui-react'
+import * as actions from '../actions'
 
 class CommentForm extends Component {
   constructor(props) {
@@ -17,12 +18,17 @@ class CommentForm extends Component {
     this.setState({[event.target.name]: event.target.value})
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.postComment(this.state)
+    this.setState({...this.state, content: ''})
+  }
+
   render() {
-    console.log(this.state);
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <Form.Field>
-          <input name="content" value={this.state.content} placeholder={'Add Comment'} onChange={this.handleChange}/>
+          <input name="content" value={this.state.content} placeholder='Add Comment' onChange={this.handleChange}/>
         </Form.Field>
         <Button type="submit">Post Comment</Button>
       </Form>
@@ -37,8 +43,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    
+    postComment: (comment) => {dispatch(actions.postComment(comment))}
   }
 }
 
-export default connect(mapStateToProps)(CommentForm)
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm)

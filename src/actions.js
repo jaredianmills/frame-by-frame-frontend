@@ -219,6 +219,7 @@ export function hideComments() {
 
 export function fetchComments(noteId) {
   return (dispatch) => {
+    dispatch({ type: types.FETCHING_COMMENTS })
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/comments`, {
       method: 'GET',
       headers: {Authorization: `Bearer ${localStorage.getItem('jwt')}`}
@@ -233,5 +234,21 @@ export function setComments(comments) {
   return {
     type: types.SET_COMMENTS,
     payload: comments
+  }
+}
+
+export function postComment(comment) {
+  return (dispatch) => {
+    let configObj = {method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(comment)
+    }
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/comments`, configObj)
+    .then(response => response.json())
+    .then(newComment => dispatch({ type: types.ADD_COMMENT, payload: newComment }))
   }
 }

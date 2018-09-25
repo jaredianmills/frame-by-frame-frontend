@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Form, Message, TextArea, Header, Modal } from 'semantic-ui-react'
+import { Button, Form, Message, TextArea, Header, Modal, Loader } from 'semantic-ui-react'
 import * as actions from '../actions'
 import Comment from './Comment'
 import CommentForm from './CommentForm'
@@ -28,7 +28,7 @@ class Comments extends Component {
         <Button style={{float: 'right'}} onClick={this.props.hideComments}>x</Button>
         <Modal.Content>
           <Modal.Header><h1>Comments</h1></Modal.Header>
-          {this.renderComments()}
+          {this.props.fetchingComments ? <Loader active inline='centered' /> : this.renderComments()}
           <CommentForm />
         </Modal.Content>
       </Modal>
