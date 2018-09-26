@@ -128,11 +128,10 @@ const reducer = (state = initialState, action) => {
       return {...state, comments: action.payload, fetchingComments: false}
 
     case types.ADD_COMMENT:
-      // debugger
-      let foundNote = state.currentProject.notes.find(note => note.id === action.payload.note_id)
+      let foundNote = state.currentProjectNotes.find(note => note.id === action.payload.note_id)
       let updatedNote = {...foundNote, comments: [...foundNote.comments, action.payload]}
-      let index = state.currentProject.notes.indexOf(foundNote)
-      return {...state, comments: [...state.comments, action.payload], currentProject: {...state.currentProject, notes: [...state.currentProject.notes.slice(0, index), ...updatedNote, ...state.currentProject.notes.slice(index + 1)]}}
+      let index = state.currentProjectNotes.indexOf(foundNote)
+      return {...state, comments: [...state.comments, action.payload], currentProjectNotes: [...state.currentProjectNotes.slice(0, index), updatedNote, ...state.currentProjectNotes.slice(index + 1)]}
 
     default:
       return state
