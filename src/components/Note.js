@@ -47,10 +47,6 @@ class Note extends Component {
     this.props.showComments(this.props.note)
   }
 
-  handleMarkAsComplete = (note) => {
-    this.props.markNoteComplete(note)
-  }
-
   render() {
     // console.log(this.props);
     return (
@@ -64,7 +60,7 @@ class Note extends Component {
           <Button onClick={this.goToNote}>Go to Note</Button>
           <Button onClick={this.viewComments}>Comments ({this.props.numberOfComments})</Button>
           <br/><br/>
-          <Button onClick={() => this.handleMarkAsComplete(this.props.note)}>{this.props.note.completed ? 'Mark as Incomplete' : 'Mark as Complete'}</Button>
+          <Button onClick={() => this.props.toggleNoteComplete(this.props.note)}>{this.props.note.completed ? 'Mark as Incomplete' : 'Mark as Complete'}</Button>
         </Card.Content>
       </Card>
     )
@@ -79,7 +75,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setVideoPlayTime: (time) => {dispatch(actions.setVideoPlayTime(time))},
     showComments: (note) => {dispatch(actions.showComments(note))},
-    markNoteComplete: (note) => {dispatch(actions.markNoteComplete(note))}
+    toggleNoteComplete: (note) => {dispatch(actions.toggleNoteComplete(note))}
   }
 }
 

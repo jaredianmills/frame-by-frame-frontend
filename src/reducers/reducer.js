@@ -133,7 +133,7 @@ const reducer = (state = initialState, action) => {
       let index = state.currentProjectNotes.indexOf(foundNote)
       return {...state, comments: [...state.comments, action.payload], currentProjectNotes: [...state.currentProjectNotes.slice(0, index), updatedNote, ...state.currentProjectNotes.slice(index + 1)]}
 
-    case types.MARK_NOTE_AS_COMPLETE:
+    case types.TOGGLE_NOTE_COMPLETE:
       let completedNote = action.payload
       let foundCompletedNote = state.currentProjectNotes.find(note => note.id === completedNote.id)
       let indexOfCompletedNote = state.currentProjectNotes.indexOf(foundCompletedNote)

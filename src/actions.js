@@ -252,7 +252,7 @@ export function postComment(comment) {
   }
 }
 
-export function markNoteComplete(note) {
+export function toggleNoteComplete(note) {
   return (dispatch) => {
     let configObj = {method: 'PATCH',
       headers: {
@@ -260,11 +260,11 @@ export function markNoteComplete(note) {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify({...note, completed: true})
+      body: JSON.stringify({...note, completed: !note.completed})
     }
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/notes/${note.id}`, configObj)
     .then(response => response.json())
     // .then(updatedNote => console.log(updatedNote))
-    .then(updatedNote => dispatch({ type: types.MARK_NOTE_AS_COMPLETE, payload: updatedNote }))
+    .then(updatedNote => dispatch({ type: types.TOGGLE_NOTE_COMPLETE, payload: updatedNote }))
   }
 }
