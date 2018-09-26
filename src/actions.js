@@ -50,7 +50,6 @@ export function loginUser(userLogin) {
         }
       })
       .then(JSONResponse => {
-        console.log('JSONResponse', JSONResponse);
         localStorage.setItem('jwt', JSONResponse.jwt)
         dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
       })
@@ -250,5 +249,22 @@ export function postComment(comment) {
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/comments`, configObj)
     .then(response => response.json())
     .then(newComment => dispatch({ type: types.ADD_COMMENT, payload: newComment }))
+  }
+}
+
+export function markNoteComplete(note) {
+  return (dispatch) => {
+    let configObj = {method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({...note, completed: true})
+    }
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/notes/${note.id}`, configObj)
+    .then(response => response.json())
+    // .then(updatedNote => console.log(updatedNote))
+    .then(updatedNote => dispatch({ type: types.MARK_NOTE_AS_COMPLETE, payload: updatedNote }))
   }
 }

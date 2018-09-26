@@ -47,8 +47,8 @@ class Note extends Component {
     this.props.showComments(this.props.note)
   }
 
-  markAsComplete = () => {
-    console.log(`Note ${this.props.note.id} is complete`)
+  handleMarkAsComplete = (note) => {
+    this.props.markNoteComplete(note)
   }
 
   render() {
@@ -59,12 +59,12 @@ class Note extends Component {
           <Card.Header>{`${this.props.note.user.first_name} ${this.props.note.user.last_name}`} says</Card.Header>
           <Card.Description>{this.props.note.content}</Card.Description>
           <Card.Meta>Timecode: {this.displayTimecode()}</Card.Meta>
-          <Card.Meta>Status: {this.props.note.complete ? 'Completed' : 'Not Completed'}</Card.Meta>
+          <Card.Meta>Status: {this.props.note.completed ? 'Completed' : 'Not Completed'}</Card.Meta>
           <br/>
           <Button onClick={this.goToNote}>Go to Note</Button>
           <Button onClick={this.viewComments}>Comments ({this.props.numberOfComments})</Button>
           <br/><br/>
-          <Button onClick={this.markAsComplete}>{this.props.note.complete ? 'Mark as Incomplete' : 'Mark as Complete'}</Button>
+          <Button onClick={() => this.handleMarkAsComplete(this.props.note)}>{this.props.note.completed ? 'Mark as Incomplete' : 'Mark as Complete'}</Button>
         </Card.Content>
       </Card>
     )
@@ -78,7 +78,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setVideoPlayTime: (time) => {dispatch(actions.setVideoPlayTime(time))},
-    showComments: (note) => {dispatch(actions.showComments(note))}
+    showComments: (note) => {dispatch(actions.showComments(note))},
+    markNoteComplete: (note) => {dispatch(actions.markNoteComplete(note))}
   }
 }
 
