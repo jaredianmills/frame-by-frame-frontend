@@ -67,7 +67,7 @@ const reducer = (state = initialState, action) => {
       return {...state, videoPlayTime: action.payload, noteWasClicked: !state.noteWasClicked}
 
     case types.RENDER_NEW_PROJECT_FORM:
-      return {...state, displayNewProjectForm: true, currentProject: null}
+      return {...state, displayNewProjectForm: true}
 
     case types.RENDER_ADD_USER_TO_PROJECT_FORM:
       return {...state, displayAddUserToProjectForm: true}
@@ -110,6 +110,10 @@ const reducer = (state = initialState, action) => {
 
     case types.HIDE_NEW_PROJECT_FORM:
       return {...state, displayNewProjectForm: false}
+
+    case types.ADD_NEW_PROJECT_TO_PROJECTS_LIST:
+      console.log('got to reducer');
+      return {...state, user: {...state.user, projects: [...state.user.projects, action.payload]}, currentProject: action.payload, displayNewProjectForm: false}
 
     default:
       return state

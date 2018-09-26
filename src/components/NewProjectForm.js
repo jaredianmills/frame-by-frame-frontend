@@ -10,46 +10,27 @@ class NewProjectForm extends Component {
 
     this.state = {
       title: '',
-      video: null,
+      file: null,
       user_id: this.props.user.id
     }
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleFileAdd = (event) => {
+    let file = event.target.files[0]
+    this.setState({...this.state, file: file})
+  }
 
-    const data = new FormData();
-    data.append("title", this.state.title);
-    data.append("video", this.state.video);
-    data.append("user_id", this.state.user_id);
+  handleChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})
+  }
 
-    fetch(process.env.REACT_APP_PROJECTS_API, {
-      method: "POST",
-      headers: {Authorization: `Bearer ${localStorage.getItem('jwt')}`},
-      body: data,
-    })
-      .then(res => {
-        return res.json();
-      })
-      .then(json => {
-        console.log(json);
-      });
-  };
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.postVideo(this.state)
+  }
 
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  handleFileUpload = event => {
-    this.setState({
-      video: event.target.files[0],
-    });
-  };
 
   render() {
-    console.log(this.props);
     return (
       <Modal open={this.props.displayNewProjectForm}>
         <Button style={{float: 'right'}} onClick={this.props.hideNewProjectForm}>x</Button>
@@ -60,9 +41,13 @@ class NewProjectForm extends Component {
           <br/>
           {this.props.error ? <Message style={{textAlign: 'center'}}error header='There was an error processing your request' content={this.props.error} /> : null}
           <Form onSubmit={this.handleSubmit}>
-            <input type='text' name='userEmail' placeholder='enter user email address' value={this.state.userEmail} onChange={this.handleChange} />
-            <br/>
-            <br/>
+            <input type='text' name='title' placeholder='Project Title' value={this.state.title} onChange={this.handleChange} />
+            <br/><br/>
+            <Label as="label" basic htmlFor="upload">
+              <Button icon="upload" label={{basic: true, content: 'Select file'}} labelPosition="right" />
+              <input hidden id="upload" type="file" onChange={this.handleFileAdd} />
+            </Label>
+            <br/><br/>
             <Button>Submit</Button>
           </Form>
         </Modal.Content>
@@ -78,7 +63,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    hideNewProjectForm: () => {dispatch(actions.hideNewProjectForm())}
+    hideNewProjectForm: () => {dispatch(actions.hideNewProjectForm())},
+    postVideo: (project) => {dispatch(actions.postVideo(project))}
   }
 }
 
