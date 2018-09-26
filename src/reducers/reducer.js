@@ -40,7 +40,6 @@ let initialState = {
   authenticatingUser: false,
   failedLogin: false,
   error: null,
-  // currentDisplay: null,
   currentProject: null,
   currentProjectNotes: [],
   currentVideoTime: null,
@@ -52,7 +51,8 @@ let initialState = {
   fetchingComments: false,
   displayComments: false,
   currentNote: null,
-  comments: []
+  comments: [],
+  displayCompletedNotes: true
 }
 
 const reducer = (state = initialState, action) => {
@@ -138,6 +138,9 @@ const reducer = (state = initialState, action) => {
       let foundCompletedNote = state.currentProjectNotes.find(note => note.id === completedNote.id)
       let indexOfCompletedNote = state.currentProjectNotes.indexOf(foundCompletedNote)
       return {...state, currentProjectNotes: [...state.currentProjectNotes.slice(0, indexOfCompletedNote), completedNote, ...state.currentProjectNotes.slice(indexOfCompletedNote + 1)]}
+
+    case types.TOGGLE_COMPLETED_NOTE_DISPLAY:
+      return {...state, displayCompletedNotes: !state.displayCompletedNotes}
 
     default:
       return state

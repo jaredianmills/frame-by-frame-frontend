@@ -268,3 +268,7 @@ export function toggleNoteComplete(note) {
     .then(updatedNote => dispatch({ type: types.TOGGLE_NOTE_COMPLETE, payload: updatedNote }))
   }
 }
+
+export function toggleCompletedNoteDisplay() {
+  return {type: types.TOGGLE_COMPLETED_NOTE_DISPLAY}
+}
