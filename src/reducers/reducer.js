@@ -52,7 +52,7 @@ let initialState = {
   displayComments: false,
   currentNote: null,
   comments: [],
-  displayCompletedNotes: true
+  displayCompletedNotes: false
 }
 
 const reducer = (state = initialState, action) => {

@@ -12,7 +12,7 @@ const NoteList = (props) => {
       return sortAndMapNotes(notes)
     } else {
       let filteredNotes = notes.filter(note => !note.completed)
-      return sortAndMapNotes(filteredNotes)      
+      return sortAndMapNotes(filteredNotes)
     }
   }
 
@@ -46,5 +46,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NoteList)
-
-//
