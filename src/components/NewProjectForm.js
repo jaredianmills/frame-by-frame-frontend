@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Form, Button, Label } from 'semantic-ui-react'
-import withAuth from '../hoc/withAuth'
-import { Player,
-  ControlBar,
-  BigPlayButton,
-  ReplayControl,
-  ForwardControl,
-  CurrentTimeDisplay,
-  PlaybackRateMenuButton
-} from 'video-react'
+import { Form, Button, Label, Modal, Message } from 'semantic-ui-react'
+import * as actions from '../actions'
+
 
 class NewProjectForm extends Component {
   constructor(props) {
@@ -18,7 +11,7 @@ class NewProjectForm extends Component {
     this.state = {
       title: '',
       video: null,
-      user_id: 1
+      user_id: this.props.user.id
     }
   }
 
@@ -58,44 +51,22 @@ class NewProjectForm extends Component {
   render() {
     console.log(this.props);
     return (
-      <div style={{width: "20%", height: 'auto', marginLeft: '30%', marginTop: '20%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
-        <Form onSubmit={this.handleSubmit}>
-          <input
-            name="title"
-            type="text"
-            placeholder="Project Title"
-            value={this.state.title}
-            onChange={this.handleChange}
-          />
-          {/* <input type="file" onChange={this.handleFileUpload} /> */}
-        <br/><br/>
-          <Label
-            as="label"
-            basic
-            htmlFor="upload"
-        >
-            <Button
-                icon="upload"
-                label={{
-                    basic: true,
-                    content: 'Select file(s)'
-                }}
-                labelPosition="right"
-            />
-            <input
-                hidden
-                id="upload"
-                multiple
-                type="file"
-                onChange={this.handleFileUpload}
-            />
-        </Label>
-        <br/><br/>
-        <Form.Button content="Submit" />
-      </Form>
-
-
-      </div>
+      <Modal open={this.props.displayNewProjectForm}>
+        <Button style={{float: 'right'}} onClick={this.props.hideNewProjectForm}>x</Button>
+        <Modal.Content>
+          <Modal.Header>
+            <h1>Create a New Project</h1>
+          </Modal.Header>
+          <br/>
+          {this.props.error ? <Message style={{textAlign: 'center'}}error header='There was an error processing your request' content={this.props.error} /> : null}
+          <Form onSubmit={this.handleSubmit}>
+            <input type='text' name='userEmail' placeholder='enter user email address' value={this.state.userEmail} onChange={this.handleChange} />
+            <br/>
+            <br/>
+            <Button>Submit</Button>
+          </Form>
+        </Modal.Content>
+      </Modal>
     );
   }
 
@@ -105,4 +76,49 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default (connect(mapStateToProps)(NewProjectForm))
+const mapDispatchToProps = (dispatch) => {
+  return {
+    hideNewProjectForm: () => {dispatch(actions.hideNewProjectForm())}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewProjectForm)
+
+
+
+
+
+// {/* <Form onSubmit={this.handleSubmit}>
+//   <input
+//     name="title"
+//     type="text"
+//     placeholder="Project Title"
+//     value={this.state.title}
+//     onChange={this.handleChange}
+//   />
+//   {/* <input type="file" onChange={this.handleFileUpload} /> */}
+// <br/><br/>
+//   <Label
+//     as="label"
+//     basic
+//     htmlFor="upload"
+// >
+//     <Button
+//         icon="upload"
+//         label={{
+//             basic: true,
+//             content: 'Select file(s)'
+//         }}
+//         labelPosition="right"
+//     />
+//     <input
+//         hidden
+//         id="upload"
+//         multiple
+//         type="file"
+//         onChange={this.handleFileUpload}
+//     />
+// </Label>
+// <br/><br/>
+// <Form.Button content="Submit" />
+// </Form> */}

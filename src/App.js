@@ -25,7 +25,7 @@ class App extends Component {
           <Route exact path="/" render={ () => <Redirect to="/projects" /> } />
           <Route exact path="/projects" component={ProjectPage} />
           <Route exact path="/newproject" component={NewProjectForm}/>}/>
-          <Route path={`/projects/:projectId`} component={Project}/>
+          {/* <Route path={`/projects/:projectId`} component={Project}/> */}
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/signup" component={SignupForm} />
           <Route component={NotFound} />

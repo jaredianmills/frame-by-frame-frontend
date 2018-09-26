@@ -272,3 +272,7 @@ export function toggleNoteComplete(note) {
 export function toggleCompletedNoteDisplay() {
   return {type: types.TOGGLE_COMPLETED_NOTE_DISPLAY}
 }
+
+export function hideNewProjectForm() {
+  return {type: types.HIDE_NEW_PROJECT_FORM}
+}

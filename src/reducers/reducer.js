@@ -1,39 +1,5 @@
 import * as types from '../types'
 
-// let initialState = {
-//   user: {
-//     id: 1,
-//     first_name: 'jared',
-//     last_name: 'mills',
-//     email: 'jaredianmills@gmail.com',
-//     projects: [
-//       {
-//         id: 1,
-//         title: 'Kyp Catches a Ball',
-//         video_url: "https://flatironmod5project.s3.amazonaws.com/IMG_4482.MOV",
-//         notes: [
-//           {
-//             id: 1,
-//             content: "good boy",
-//             timecode: 2.104,
-//             completed: false,
-//             comments: [
-//               {
-//                 id: 1,
-//                 content: "i agree"
-//               }
-//             ]
-//           }
-//         ]
-//       }
-//     ],
-//   },
-//   currentDisplay: null,
-//   currentProject: null,
-//   currentVideoTime: null,
-//   displayNoteForm: false,
-// }
-
 let initialState = {
   user: null,
   loggedIn: false,
@@ -141,6 +107,9 @@ const reducer = (state = initialState, action) => {
 
     case types.TOGGLE_COMPLETED_NOTE_DISPLAY:
       return {...state, displayCompletedNotes: !state.displayCompletedNotes}
+
+    case types.HIDE_NEW_PROJECT_FORM:
+      return {...state, displayNewProjectForm: false}
 
     default:
       return state
