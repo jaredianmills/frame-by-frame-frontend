@@ -59,10 +59,12 @@ class Note extends Component {
           <Card.Header>{`${this.props.note.user.first_name} ${this.props.note.user.last_name}`} says</Card.Header>
           <Card.Description>{this.props.note.content}</Card.Description>
           <Card.Meta>Timecode: {this.displayTimecode()}</Card.Meta>
+          <Card.Meta>Status: {this.props.note.complete ? 'Completed' : 'Not Completed'}</Card.Meta>
           <br/>
           <Button onClick={this.goToNote}>Go to Note</Button>
           <Button onClick={this.viewComments}>Comments ({this.props.numberOfComments})</Button>
-          <Button onClick={this.markAsComplete}>Complete</Button>
+          <br/><br/>
+          <Button onClick={this.markAsComplete}>{this.props.note.complete ? 'Mark as Incomplete' : 'Mark as Complete'}</Button>
         </Card.Content>
       </Card>
     )
