@@ -7,6 +7,7 @@ require('dotenv').config()
 
 export function createUser(userLogin) {
   return (dispatch) => {
+    dispatch({ type: 'AUTHENTICATING_USER' })
     let configObj = {method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,7 +24,6 @@ export function createUser(userLogin) {
         }
       })
       .then(JSONResponse => {
-        console.log('JSONResponse', JSONResponse);
         localStorage.setItem('jwt', JSONResponse.jwt)
         dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
       })
