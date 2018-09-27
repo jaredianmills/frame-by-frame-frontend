@@ -18,7 +18,8 @@ let initialState = {
   displayComments: false,
   currentNote: null,
   comments: [],
-  displayCompletedNotes: false
+  displayCompletedNotes: false,
+  uploadingVideo: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -108,8 +109,11 @@ const reducer = (state = initialState, action) => {
     case types.TOGGLE_COMPLETED_NOTE_DISPLAY:
       return {...state, displayCompletedNotes: !state.displayCompletedNotes}
 
+    case types.UPLOADING_VIDEO:
+      return {...state, uploadingVideo: true}
+
     case types.HIDE_NEW_PROJECT_FORM:
-      return {...state, displayNewProjectForm: false}
+      return {...state, displayNewProjectForm: false, uploadingVideo: false}
 
     case types.ADD_NEW_PROJECT_TO_PROJECTS_LIST:
       console.log('got to reducer');

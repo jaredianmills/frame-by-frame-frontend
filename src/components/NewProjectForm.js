@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Form, Button, Label, Modal, Message } from 'semantic-ui-react'
+import { Form, Button, Label, Modal, Message, Dimmer, Loader } from 'semantic-ui-react'
 import * as actions from '../actions'
 
 
@@ -29,6 +29,14 @@ class NewProjectForm extends Component {
     this.props.postVideo(this.state)
   }
 
+  renderDimmer = () => {
+    return (
+      <Dimmer active inverted>
+        <Loader size='large'>Uploading</Loader>
+      </Dimmer>
+    )
+  }
+
 
   render() {
     return (
@@ -41,6 +49,7 @@ class NewProjectForm extends Component {
           <br/>
           {this.props.error ? <Message style={{textAlign: 'center'}}error header='There was an error processing your request' content={this.props.error} /> : null}
           <Form onSubmit={this.handleSubmit}>
+            {this.props.uploadingVideo ? this.renderDimmer() : null}
             <input type='text' name='title' placeholder='Project Title' value={this.state.title} onChange={this.handleChange} />
             <br/><br/>
             <Label as="label" basic htmlFor="upload">

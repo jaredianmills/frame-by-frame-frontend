@@ -279,7 +279,9 @@ export function hideNewProjectForm() {
 }
 
 export function postVideo(project) {
+
   return (dispatch) => {
+    dispatch({ type: types.UPLOADING_VIDEO })
     const config = {
       bucketName: process.env.REACT_APP_BUCKET,
       dirName: 'videos',
