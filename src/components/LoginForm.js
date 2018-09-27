@@ -27,7 +27,7 @@ class LoginForm extends Component {
   renderDimmer = () => {
     return (
       <Dimmer active inverted>
-        <Loader size='large'>Loading</Loader>
+        <Loader size='large'>Logging In</Loader>
       </Dimmer>
     )
   }
@@ -35,18 +35,18 @@ class LoginForm extends Component {
   renderLoginForm = () => {
     return (
       <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue', textAlign: 'center'}}>
-      <h1>Login</h1>
-      {this.props.error ? <Message style={{textAlign: 'center'}}error header='There was an error processing your request' content={this.props.error} /> : null}
-      <Form onSubmit={this.handleSubmit}>
-        <input type='text' name='email' placeholder='email' onChange={this.handleChange}/>
-        <br/>
-        <input type='password' name='password' placeholder='password' onChange={this.handleChange}/>
-        <br/>
-        <br/>
-        <Button type='submit'>Login</Button>
-      </Form>
-      <h5>Not a member? <Link to='/signup'>Sign Up</Link></h5>
-    </div>
+        <h1>Login</h1>
+        {this.props.error ? <Message style={{textAlign: 'center'}}error header='There was an error processing your request' content={this.props.error} /> : null}
+        <Form onSubmit={this.handleSubmit}>
+          <input type='text' name='email' placeholder='email' onChange={this.handleChange}/>
+          <br/>
+          <input type='password' name='password' placeholder='password' onChange={this.handleChange}/>
+          <br/>
+          <br/>
+          <Button type='submit'>Login</Button>
+        </Form>
+        <h5>Not a member? <Link to='/signup'>Sign Up</Link></h5>
+      </div>
     )
   }
 

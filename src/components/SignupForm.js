@@ -29,7 +29,7 @@ class SignupForm extends Component {
   renderDimmer = () => {
     return (
       <Dimmer active inverted>
-        <Loader size='large'>Loading</Loader>
+        <Loader size='large'>Signing Up</Loader>
       </Dimmer>
     )
   }
@@ -37,21 +37,21 @@ class SignupForm extends Component {
   renderSignUpForm = () => {
     return (
       <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue', textAlign: 'center'}}>
-      <h1>Sign Up</h1>
-      <Form onSubmit={this.handleSubmit}>
-        <input type='text' name='first_name' placeholder='First Name' onChange={this.handleChange}/>
-        <br/>
-        <input type='text' name='last_name' placeholder='Last Name' onChange={this.handleChange}/>
-        <br/>
-        <input type='text' name='email' placeholder='email' onChange={this.handleChange}/>
-        <br/>
-        <input type='password' name='password' placeholder='password' onChange={this.handleChange}/>
-        <br/>
-        <br/>
-        <Button type='submit'>Sign Up</Button>
-      </Form>
-      <h5>Already a member? <Link to='/login'>Log In</Link></h5>
-    </div>
+        <h1>Sign Up</h1>
+        <Form onSubmit={this.handleSubmit}>
+          <input type='text' name='first_name' placeholder='First Name' onChange={this.handleChange}/>
+          <br/>
+          <input type='text' name='last_name' placeholder='Last Name' onChange={this.handleChange}/>
+          <br/>
+          <input type='text' name='email' placeholder='email' onChange={this.handleChange}/>
+          <br/>
+          <input type='password' name='password' placeholder='password' onChange={this.handleChange}/>
+          <br/>
+          <br/>
+          <Button type='submit'>Sign Up</Button>
+        </Form>
+        <h5>Already a member? <Link to='/login'>Log In</Link></h5>
+      </div>
     )
   }
 
