@@ -1,33 +1,52 @@
-import React from 'react'
-import { Card, Button } from 'semantic-ui-react'
+import React, { Component } from 'react'
+import { Card, Button, Input, Icon, Label } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import Note from './Note'
 import * as actions from '../actions'
 
-const NoteList = (props) => {
+class NoteList extends Component {
+  constructor(props) {
+    super(props)
 
-  const handleNoteDisplay = (notes) => {
-    if (props.displayCompletedNotes) {
-      return sortAndMapNotes(notes)
-    } else {
-      let filteredNotes = notes.filter(note => !note.completed)
-      return sortAndMapNotes(filteredNotes)
+    this.state = {
+      searchTerm: ''
     }
   }
 
-  const sortAndMapNotes = (notes) => {
+  handleNoteDisplay = (notes) => {
+    let searchedNotes = notes.filter(note => {
+      let userName = `${note.user.first_name} ${note.user.last_name}`
+      return note.content.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || userName.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    })
+    if (this.props.displayCompletedNotes) {
+      return this.sortAndMapNotes(searchedNotes)
+    } else {
+      let filteredNotes = searchedNotes.filter(note => !note.completed)
+      return this.sortAndMapNotes(filteredNotes)
+    }
+  }
+
+  sortAndMapNotes = (notes) => {
     return notes.sort((a, b) => a.timecode - b.timecode).map(note => <Note key={note.id} note={note} numberOfComments={note.comments.length}/>)
   }
 
-  return (
-    <div className='notelist'>
-      <h1 style={{textAlign: 'center', textDecoration: 'underline'}}>Notes</h1>
-      <Button onClick={props.toggleCompletedNoteDisplay}>{props.displayCompletedNotes ? 'Hide Completed Notes' : 'Show Completed Notes'}</Button>
-      <Card.Group style={{marginTop: '1%'}}>
-      {props.notes ? handleNoteDisplay(props.notes) : null}
-    </Card.Group>
-    </div>
-  )
+  handleSearchChange = (event) => {
+    this.setState({searchTerm: event.target.value})
+  }
+
+  render() {
+    return (
+      <div className='notelist'>
+        <h1 style={{textAlign: 'center', textDecoration: 'underline'}}>Notes</h1>
+        <Button color='linkedin' onClick={this.props.toggleCompletedNoteDisplay}>{this.props.displayCompletedNotes ? 'Hide Completed Notes' : 'Show Completed Notes'}</Button>
+        <br/><br/>
+        <Input style={{width: '100%'}} placeholder="Search Notes"value={this.state.searchTerm} onChange={this.handleSearchChange}/>
+        <Card.Group style={{marginTop: '1%'}}>
+        {this.props.notes ? this.handleNoteDisplay(this.props.notes) : null}
+      </Card.Group>
+      </div>
+    )
+  }
 
 }
 
