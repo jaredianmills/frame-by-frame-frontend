@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card, Button } from 'semantic-ui-react'
+import { Card, Button, Icon } from 'semantic-ui-react'
 import * as actions from '../actions'
 
 class Note extends Component {
@@ -57,10 +57,26 @@ class Note extends Component {
           <Card.Meta>Timecode: {this.displayTimecode()}</Card.Meta>
           <Card.Meta>Status: {this.props.note.completed ? 'Completed' : 'Not Completed'}</Card.Meta>
           <br/>
-          <Button onClick={this.goToNote}>Go to Note</Button>
-          <Button onClick={this.viewComments}>Comments ({this.props.numberOfComments})</Button>
-          <br/><br/>
-          <Button onClick={() => this.props.toggleNoteComplete(this.props.note)}>{this.props.note.completed ? 'Mark as Incomplete' : 'Mark as Complete'}</Button>
+
+          <Button size='tiny' animated basic color='blue' onClick={this.goToNote}>
+            <Button.Content visible > Go to Note </Button.Content>
+            <Button.Content hidden> <Icon name='video play'/> </Button.Content>
+          </Button>
+
+          <Button size='tiny' animated basic color='blue' onClick={this.viewComments}>
+            <Button.Content visible> Comments ({this.props.numberOfComments}) </Button.Content>
+            <Button.Content hidden> <Icon name='comments'/> </Button.Content>
+          </Button>
+
+          {/* <br/><br/> */}
+          <Button size='tiny' animated basic color='blue' onClick={() => this.props.toggleNoteComplete(this.props.note)}>
+            <Button.Content visible>
+              {this.props.note.completed ? 'Mark Incomplete' : 'Mark Complete'}
+            </Button.Content>
+            <Button.Content hidden>
+              {this.props.note.completed ? <Icon name='times'/> : <Icon name='check'/>}
+            </Button.Content>
+          </Button>
         </Card.Content>
       </Card>
     )
