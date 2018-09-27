@@ -5,7 +5,6 @@ import Note from './Note'
 import * as actions from '../actions'
 
 const NoteList = (props) => {
-  console.log(props);
 
   const handleNoteDisplay = (notes) => {
     if (props.displayCompletedNotes) {
