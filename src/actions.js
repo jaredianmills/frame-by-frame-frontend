@@ -292,7 +292,6 @@ export function postVideo(project) {
 
     uploadFile(project.file, config)
       .then(response => {
-        uploadProgress()
         if (response.result.ok) {
           return response
         } else {
