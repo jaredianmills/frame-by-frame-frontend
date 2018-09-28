@@ -5,6 +5,8 @@ import * as actions from '../actions'
 import { withRouter, Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 
+const background = require(`../images/binding_light.png`)
+
 class SignupForm extends Component {
   constructor(props) {
     super(props)
@@ -36,8 +38,8 @@ class SignupForm extends Component {
 
   renderSignUpForm = () => {
     return (
-      <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue', textAlign: 'center'}}>
-        <h1>Sign Up</h1>
+      <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '2px 2px 20px black', backgroundImage: `url(${background})`, textAlign: 'center'}}>
+        <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Sign Up</h1>
         <Form onSubmit={this.handleSubmit}>
           <input type='text' name='first_name' placeholder='First Name' onChange={this.handleChange}/>
           <br/>
@@ -48,7 +50,7 @@ class SignupForm extends Component {
           <input type='password' name='password' placeholder='password' onChange={this.handleChange}/>
           <br/>
           <br/>
-          <Button type='submit'>Sign Up</Button>
+          <Button color='blue' type='submit'>Sign Up</Button>
         </Form>
         <h5>Already a member? <Link to='/login'>Log In</Link></h5>
       </div>

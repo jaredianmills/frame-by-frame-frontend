@@ -37,10 +37,11 @@ class NoteList extends Component {
   render() {
     return (
       <div className='notelist'>
-        <h1 style={{textAlign: 'center', textDecoration: 'underline'}}>Notes</h1>
-        <Button color='linkedin' onClick={this.props.toggleCompletedNoteDisplay}>{this.props.displayCompletedNotes ? 'Hide Completed Notes' : 'Show Completed Notes'}</Button>
+        <h1 style={{textAlign: 'center', color: 'white', textShadow: '2px 2px 8px black'}}>Notes</h1>
+        <Button inverted color='facebook' onClick={this.props.toggleCompletedNoteDisplay}>{this.props.displayCompletedNotes ? 'Hide Completed Notes' : 'Show Completed Notes'}</Button>
         <br/><br/>
         <Input style={{width: '100%'}} placeholder="Search Notes"value={this.state.searchTerm} onChange={this.handleSearchChange}/>
+        <hr/>
         <Card.Group style={{marginTop: '1%'}}>
         {this.props.notes ? this.handleNoteDisplay(this.props.notes) : null}
       </Card.Group>

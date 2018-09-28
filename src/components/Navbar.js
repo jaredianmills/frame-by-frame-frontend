@@ -5,17 +5,17 @@ import { Menu, Button } from 'semantic-ui-react'
 import * as actions from '../actions'
 
 const Navbar = (props) => {
-  const background = require(`../images/binding_light.png`)
+  const background = require(`../images/mochaGrunge.png`)
   return(
     <div>
-    <Menu style={{backgroundImage: `url(${background})`}}>
+    <Menu style={{backgroundImage: `url(${background})`, boxShadow: '2px 2px 20px black', color: 'white', textShadow: '2px 2px 8px black'}}>
       <Menu.Item>
-        <h1>Frame by Frame</h1>
+        <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Frame by Frame</h1>
       </Menu.Item>
         {props.loggedIn ? <Menu.Item >
-          {props.loggedIn ? <Button color='blue' onClick={props.logOut}>Log Out</Button> : null}
+          {props.loggedIn ? <Button inverted color='facebook' onClick={props.logOut}>Log Out</Button> : null}
         </Menu.Item> : null}
-        {props.loggedIn ? <Menu.Item ><Button color='blue' onClick={props.renderNewProjectForm}>New Project</Button></Menu.Item> : null}
+        {props.loggedIn ? <Menu.Item ><Button inverted color='facebook' onClick={props.renderNewProjectForm}>New Project</Button></Menu.Item> : null}
         {props.user ? <h1 style={{marginLeft: '2%', marginBottom: '1.25%'}}>Welcome, {props.user.first_name}</h1> : null}
     </Menu>
   </div>

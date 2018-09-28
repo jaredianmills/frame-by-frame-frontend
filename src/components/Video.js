@@ -11,7 +11,7 @@ import { Player,
   PlaybackRateMenuButton
 } from 'video-react'
 
-const background = require(`../images/binding_light.png`)
+const background = require(`../images/mochaGrunge.png`)
 
 class Video extends Component {
 
@@ -35,7 +35,8 @@ class Video extends Component {
 
     render() {
       return(
-        <div style={{width: "60%", height: 'auto', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundImage: `url(${background})` }}>
+        <div style={{width: "60%", height: 'auto', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 20px black', backgroundImage: `url(${background})` }}>
+          <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>{this.props.project.title}</h1>
           <Player
             ref="player"
             src={this.props.project.video_url}
@@ -53,8 +54,8 @@ class Video extends Component {
               />
             </ControlBar>
           </Player>
-          <Button color='blue' style={{margin: '1%'}} onClick={this.addNote}>Add a Note</Button>
-          <Button color='blue' style={{margin: '1%'}} onClick={this.addUser}>Add User to Project</Button>
+          <Button inverted color='facebook' style={{margin: '2%  0% 1% 0%'}} onClick={this.addNote}>Add a Note</Button>
+          <Button inverted color='facebook' style={{margin: '2%  0% 1% 0%', float: 'right'}} onClick={this.addUser}>Add User to Project</Button>
         </div>
       )
     }

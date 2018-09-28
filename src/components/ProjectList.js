@@ -29,12 +29,13 @@ class ProjectList extends Component {
   render() {
     return (
       <div className="sidenav">
-        <h1 style={{textAlign: 'center', textDecoration: 'underline'}}>Projects</h1>
+        <h1 style={{textAlign: 'center', color: 'white', textShadow: '2px 2px 8px black'}}>Projects</h1>
+        <hr/>
         {/* <Menu inverted pointing vertical> */}
           {this.props.user.projects.map(project => {
             return (
               <React.Fragment key={project.id}>
-                <Button color='blue' style={{textAlign: 'center', margin: 'auto', width: '100%'}} name={project.title} onClick={() => this.handleProjectSelect(project)}>
+                <Button inverted color='facebook' style={{textAlign: 'center', margin: 'auto', width: '100%'}} name={project.title} onClick={() => this.handleProjectSelect(project)}>
                   {project.title}
                 </Button>
                 <br/>
