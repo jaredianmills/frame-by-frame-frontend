@@ -59,7 +59,7 @@ class NoteForm extends Component {
           <h5 style={{textAlign: 'center'}}>Timecode: {this.displayTimecode()}</h5>
           <Form onSubmit={this.handleSubmit}>
             <Form.Field control={TextArea} name='content' placeholder='Add new note' value={this.state.note} onChange={this.handleChange} />
-            <Button>Submit</Button>
+            <Button basic color='blue'>Submit</Button>
           </Form>
         </Modal.Content>
       </Modal>

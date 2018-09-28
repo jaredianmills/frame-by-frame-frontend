@@ -39,7 +39,7 @@ class AddUserToProjectForm extends Component {
             <input type='text' name='userEmail' placeholder='enter user email address' value={this.state.userEmail} onChange={this.handleChange} />
             <br/>
             <br/>
-            <Button color='linkedin'>Submit</Button>
+            <Button basic color='blue'>Submit</Button>
           </Form>
         </Modal.Content>
       </Modal>

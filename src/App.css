@@ -1,6 +1,6 @@
 body {
   /* background-color: white; */
-  background-image: url("images/what-the-hex-dark.png")
+  background-image: url("images/tweed.png")
 }
 
 .App {
@@ -33,34 +33,36 @@ body {
 }
 
 .sidenav {
-    height: 85%;
+    height: 95%;
     width: 18%;
     position: fixed;
     z-index: 1;
     top: relative;
     left: 0;
-    background-color: lightblue;
+    /* background-color: lightblue; */
+    background-image: url("images/binding_light.png");
     /* overflow-x: hidden; */
     overflow: scroll;
     padding-top: 20px;
     padding: 0.5%;
     box-shadow: 1px 1px 5px grey;
-    margin: 0.5%;;
+    margin-top: 1.5%;
 }
 
 .notelist {
-  height: 85%;
+  height: 95%;
   width: 30%;
   position: fixed;
   z-index: 1;
   top: relative;
   right: 0;
-  background-color: lightblue;
+  background-image: url("images/binding_light.png");
+  /* background-color: lightblue; */
   /* overflow-x: hidden; */
   overflow: scroll;
   padding-top: 20px;
   padding: 0.5%;
   box-shadow: -1px 1px 5px grey;
-  margin: 0.5%;
+  /* margin: 0.5%; */
   text-align: center;
 }

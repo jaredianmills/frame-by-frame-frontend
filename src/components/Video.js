@@ -11,6 +11,8 @@ import { Player,
   PlaybackRateMenuButton
 } from 'video-react'
 
+const background = require(`../images/binding_light.png`)
+
 class Video extends Component {
 
   addNote = () => {
@@ -33,7 +35,7 @@ class Video extends Component {
 
     render() {
       return(
-        <div style={{width: "60%", height: 'auto', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
+        <div style={{width: "60%", height: 'auto', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundImage: `url(${background})` }}>
           <Player
             ref="player"
             src={this.props.project.video_url}
@@ -51,8 +53,8 @@ class Video extends Component {
               />
             </ControlBar>
           </Player>
-          <Button style={{margin: '1%'}} onClick={this.addNote}>Add a Note</Button>
-          <Button style={{margin: '1%'}} onClick={this.addUser}>Add User to Project</Button>
+          <Button color='blue' style={{margin: '1%'}} onClick={this.addNote}>Add a Note</Button>
+          <Button color='blue' style={{margin: '1%'}} onClick={this.addUser}>Add User to Project</Button>
         </div>
       )
     }

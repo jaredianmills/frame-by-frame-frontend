@@ -34,7 +34,7 @@ class ProjectList extends Component {
           {this.props.user.projects.map(project => {
             return (
               <React.Fragment key={project.id}>
-                <Button style={{textAlign: 'center', margin: 'auto', width: '100%'}} name={project.title} onClick={() => this.handleProjectSelect(project)}>
+                <Button color='blue' style={{textAlign: 'center', margin: 'auto', width: '100%'}} name={project.title} onClick={() => this.handleProjectSelect(project)}>
                   {project.title}
                 </Button>
                 <br/>
