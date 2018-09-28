@@ -54,8 +54,8 @@ class Video extends Component {
               />
             </ControlBar>
           </Player>
-          <Button inverted color='facebook' style={{margin: '2%  0% 1% 0%'}} onClick={this.addNote}>Add a Note</Button>
-          <Button inverted color='facebook' style={{margin: '2%  0% 1% 0%', float: 'right'}} onClick={this.addUser}>Add User to Project</Button>
+          <Button inverted color='facebook' style={{margin: '2%  2% 1% 0%'}} onClick={this.addNote}>Add a Note</Button>
+          <Button inverted color='facebook' style={{margin: '2%  0% 1% 0%'}} onClick={this.addUser}>Add User to Project</Button>
         </div>
       )
     }
