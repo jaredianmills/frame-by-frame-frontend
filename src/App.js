@@ -15,6 +15,8 @@ import SignupForm from './components/SignupForm'
 import NewProjectForm from './components/NewProjectForm'
 import ProjectPage from './components/ProjectPage'
 
+import ProjectPageWithHideableSidebar from './components/ProjectPageWithHideableSidebar'
+
 
 
 class App extends Component {
@@ -24,14 +26,14 @@ class App extends Component {
         <Navbar style={{zIndex: 10}}/>
         <Switch>
           <Route exact path="/" render={ () => <Redirect to="/projects" /> } />
-          <Route exact path="/projects" component={ProjectPage} />
+          <Route exact path="/projects" component={ProjectPageWithHideableSidebar} />
           <Route exact path="/newproject" component={NewProjectForm}/>}/>
           {/* <Route path={`/projects/:projectId`} component={Project}/> */}
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/signup" component={SignupForm} />
           <Route component={NotFound} />
         </Switch>
-        {this.props.state.currentProject ? <Project /> : null}
+        {/* {this.props.state.currentProject ? <Project /> : null} */}
       </React.Fragment>
     );
   }

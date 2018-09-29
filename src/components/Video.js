@@ -30,12 +30,22 @@ class Video extends Component {
 
 
   componentDidUpdate = () => {
-    this.refs.player.seek(this.props.videoPlayTime)
+    if (this.props.videoPlayTime) {
+      this.refs.player.seek(this.props.videoPlayTime)
+    }
+  }
+
+  handleStyleChange = () => {
+    if (this.props.visibleProjectList) {
+      return {width: "48%", height: 'auto', marginLeft: '20%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 20px black', backgroundImage: `url(${background})`, transition: 'all .4s ease-out', }
+    } else {
+      return {width: "66%", height: 'auto', marginLeft: '2%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 20px black', backgroundImage: `url(${background})`, transition: 'all .4s ease-in-out', }
+    }
   }
 
     render() {
       return(
-        <div style={{width: "60%", height: 'auto', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 20px black', backgroundImage: `url(${background})` }}>
+        <div style={this.handleStyleChange()}>
           <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>{this.props.project.title}</h1>
           <Player
             ref="player"
@@ -65,7 +75,8 @@ const mapStateToProps = (state) => {
   return {
     project: state.currentProject,
     videoPlayTime: state.videoPlayTime,
-    noteWasClicked: state.noteWasClicked
+    noteWasClicked: state.noteWasClicked,
+    visibleProjectList: state.visibleProjectList
   }
 }
 

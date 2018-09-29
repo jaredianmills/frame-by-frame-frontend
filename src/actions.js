@@ -308,6 +308,10 @@ export function postVideo(project) {
   }
 }
 
+export function toggleProjectList() {
+  return {type: types.TOGGLE_PROJECT_LIST}
+}
+
 // export function createProject(project, videoURL) {
 //   let formBody = {title: project.title, video_url: videoURL, user_id: project.user_id}
 //   let configObj = {method: "POST", headers: {"Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem('jwt')}`}, body: JSON.stringify(formBody)}

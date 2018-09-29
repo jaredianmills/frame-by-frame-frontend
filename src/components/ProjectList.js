@@ -28,7 +28,7 @@ class ProjectList extends Component {
 
   render() {
     return (
-      <div className="sidenav">
+      <div className="projectlist">
         <h1 style={{textAlign: 'center', color: 'white', textShadow: '2px 2px 8px black'}}>Projects</h1>
         <hr/>
         {/* <Menu inverted pointing vertical> */}

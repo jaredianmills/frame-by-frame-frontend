@@ -32,9 +32,9 @@ body {
   to { transform: rotate(360deg); }
 }
 
-.sidenav {
+.projectlist {
     height: 95%;
-    width: 18%;
+    width: 100%;
     position: fixed;
     z-index: 1;
     top: relative;
@@ -45,7 +45,7 @@ body {
     overflow: scroll;
     padding-top: 20px;
     padding: 0.5%;
-    box-shadow: 1px 1px 20px black;
+    box-shadow: -1px -1px 20px black;
     margin-top: 1.5%;
 }
 

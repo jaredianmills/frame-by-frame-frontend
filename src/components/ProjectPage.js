@@ -27,7 +27,8 @@ class ProjectPage extends Component {
   render() {
     return (
       <div>
-        <ProjectList />
+        {/* <ProjectList /> */}
+        {this.props.currentProject ? <Project /> : null}
         {this.displayNewProjectForm()}
       </div>
     )

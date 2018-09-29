@@ -13,10 +13,17 @@ const Navbar = (props) => {
         <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Frame by Frame</h1>
       </Menu.Item>
         {props.loggedIn ? <Menu.Item >
+          {props.loggedIn ? <Button inverted color='facebook' onClick={props.toggleProjectList}>{props.visibleProjectList ? 'Hide Projects' : 'Show Projects'}</Button> : null}
+        </Menu.Item> : null}
+
+        {props.loggedIn ? <Menu.Item ><Button inverted color='facebook' onClick={props.renderNewProjectForm}>New Project</Button></Menu.Item> : null}
+
+        {props.loggedIn ? <Menu.Item >
           {props.loggedIn ? <Button inverted color='facebook' onClick={props.logOut}>Log Out</Button> : null}
         </Menu.Item> : null}
-        {props.loggedIn ? <Menu.Item ><Button inverted color='facebook' onClick={props.renderNewProjectForm}>New Project</Button></Menu.Item> : null}
+
         {props.user ? <h1 style={{marginLeft: '2%', marginBottom: '1.25%'}}>Welcome, {props.user.first_name}</h1> : null}
+
     </Menu>
   </div>
   )
@@ -29,7 +36,8 @@ function mapStateToProps(state) {
 function mapDispatchtoProps(dispatch) {
   return {
     logOut: () => {dispatch(actions.logOut())},
-    renderNewProjectForm: () => {dispatch(actions.renderNewProjectForm())}
+    renderNewProjectForm: () => {dispatch(actions.renderNewProjectForm())},
+    toggleProjectList: () => dispatch(actions.toggleProjectList())
   }
 }
 

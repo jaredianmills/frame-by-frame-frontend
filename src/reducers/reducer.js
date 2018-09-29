@@ -11,7 +11,7 @@ let initialState = {
   currentVideoTime: null,
   displayNoteForm: false,
   displayAddUserToProjectForm: false,
-  videoPlayTime: 0,
+  videoPlayTime: null,
   noteWasClicked: false,
   displayNewProjectForm: false,
   fetchingComments: false,
@@ -19,7 +19,8 @@ let initialState = {
   currentNote: null,
   comments: [],
   displayCompletedNotes: false,
-  uploadingVideo: false
+  uploadingVideo: false,
+  visibleProjectList: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -50,7 +51,7 @@ const reducer = (state = initialState, action) => {
       return {...state, currentProject: action.payload, currentProjectNotes: action.payload.notes}
 
     case types.SET_CURRENT_PROJECT:
-      return {...state, currentProject: action.payload, currentProjectNotes: action.payload.notes, videoPlayTime: 0}
+      return {...state, currentProject: action.payload, currentProjectNotes: action.payload.notes, videoPlayTime: null}
 
     case types.SET_CURRENT_VIDEO_TIME:
       return {...state, currentVideoTime: action.payload}
@@ -117,6 +118,9 @@ const reducer = (state = initialState, action) => {
 
     case types.ADD_NEW_PROJECT_TO_PROJECTS_LIST:
       return {...state, user: {...state.user, projects: [...state.user.projects, action.payload]}, currentProject: action.payload, displayNewProjectForm: false}
+
+    case types.TOGGLE_PROJECT_LIST:
+      return {...state, visibleProjectList: !state.visibleProjectList, videoPlayTime: null}
 
     default:
       return state

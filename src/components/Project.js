@@ -11,16 +11,26 @@ import * as actions from '../actions'
 class Project extends Component {
   constructor(props) {
     super(props)
+
+
   }
 
   componentDidMount = () => {
     this.props.fetchProject(this.props.currentProject.id)
   }
 
+  handleStyleChange = () => {
+    if (this.props.visibleProjectList) {
+      return {marginLeft: '20%', marginTop: '1%', transition: 'margin .32s ease-in'}
+    } else {
+      return {marginLeft: '2%', marginTop: '1%', transition: 'margin .32s ease-in'}
+    }
+  }
+
 
   render() {
     return (
-      <div style={{marginLeft: '20%', marginTop: '1%'}}>
+      <div style={{marginTop: '1%'}}>
         <NoteList notes={this.props.currentProject.notes} />
         {/* {this.props.currentProject.notes ? <NoteList notes={this.props.currentProjectNotes}/> : null} */}
         <Video />
