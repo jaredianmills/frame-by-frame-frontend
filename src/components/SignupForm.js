@@ -50,7 +50,7 @@ class SignupForm extends Component {
           <input type='password' name='password' placeholder='password' onChange={this.handleChange}/>
           <br/>
           <br/>
-          <Button color='blue' type='submit'>Sign Up</Button>
+          <Button inverted color='facebook' type='submit'>Sign Up</Button>
         </Form>
         <h5>Already a member? <Link to='/login'>Log In</Link></h5>
       </div>
