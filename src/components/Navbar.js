@@ -13,7 +13,7 @@ const Navbar = (props) => {
         <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Frame by Frame</h1>
       </Menu.Item>
         {props.loggedIn ? <Menu.Item >
-          {props.loggedIn ? <Button inverted color='facebook' onClick={props.toggleProjectList}>{props.visibleProjectList ? 'Hide Projects' : 'Show Projects'}</Button> : null}
+          {props.loggedIn ? <Button inverted color='facebook' onClick={props.toggleProjectList}>{props.visibleProjectList ? 'Hide Projects' : 'View Projects'}</Button> : null}
         </Menu.Item> : null}
 
         {props.loggedIn ? <Menu.Item ><Button inverted color='facebook' onClick={props.renderNewProjectForm}>New Project</Button></Menu.Item> : null}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Form, Message, TextArea, Header, Modal, Loader, Card } from 'semantic-ui-react'
+import { Button, Form, Message, TextArea, Header, Modal, Loader, Card, Dimmer } from 'semantic-ui-react'
 import * as actions from '../actions'
 import Comment from './Comment'
 import CommentForm from './CommentForm'
@@ -22,6 +22,14 @@ class Comments extends Component {
     }
   }
 
+  renderDimmer = () => {
+    return (
+      <Dimmer active inverted>
+        <Loader size='large'>Loading Comments</Loader>
+      </Dimmer>
+    )
+  }
+
   render() {
     console.log(this.props);
     return (
@@ -29,7 +37,7 @@ class Comments extends Component {
         <Button style={{float: 'right'}} onClick={this.props.hideComments}>x</Button>
         <Modal.Content>
           <br/>
-          <Card style={{marginLeft: "30%"}} color='blue'>
+          <Card style={{marginLeft: "33%"}} color='blue'>
             <Card.Content>
               <h3>Note:</h3>
               <Card.Header>{`${this.props.currentNote.user.first_name} ${this.props.currentNote.user.last_name} says:`}</Card.Header>
@@ -37,7 +45,7 @@ class Comments extends Component {
             </Card.Content>
           </Card>
           <h3>Comments:</h3>
-          {this.props.fetchingComments ? <Loader active inline='centered' /> : this.renderComments()}
+          {this.props.fetchingComments ? this.renderDimmer() : this.renderComments()}
           <CommentForm />
         </Modal.Content>
       </Modal>
