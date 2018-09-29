@@ -43,7 +43,7 @@ export default class SidebarExampleSidebar extends Component {
           </Sidebar>
 
           <Sidebar.Pusher>
-            <div style={{width: "1000px", height: "1000px"}}>
+            <div style={{width: "1000px", height: "1000%"}}>
             </div>
             {/* <ProjectPage /> */}
             {/* <Segment basic> */}
