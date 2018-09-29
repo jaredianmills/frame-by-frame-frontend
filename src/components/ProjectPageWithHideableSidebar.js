@@ -24,7 +24,7 @@ class ProjectPageWithHideableSidebar extends Component {
           </Sidebar>
 
           <Sidebar.Pusher>
-            <div style={{height: '100vh'}}>
+            <div style={{height: '90vh'}}>
             <ProjectPage/>
           </div>
           </Sidebar.Pusher>
