@@ -20,7 +20,7 @@ let initialState = {
   comments: [],
   displayCompletedNotes: false,
   uploadingVideo: false,
-  visibleProjectList: false
+  visibleProjectList: true
 }
 
 const reducer = (state = initialState, action) => {
