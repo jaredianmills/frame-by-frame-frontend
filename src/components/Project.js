@@ -3,17 +3,12 @@ import { connect } from 'react-redux';
 import Video from './Video'
 import NoteForm from './NoteForm'
 import NoteList from './NoteList'
-import NewProjectForm from './NewProjectForm'
 import AddUserToProjectForm from './AddUserToProjectForm'
 import Comments from './Comments'
 import * as actions from '../actions'
 
 class Project extends Component {
-  constructor(props) {
-    super(props)
 
-
-  }
 
   componentDidMount = () => {
     this.props.fetchProject(this.props.currentProject.id)

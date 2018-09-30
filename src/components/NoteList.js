@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Button, Input, Icon, Label } from 'semantic-ui-react'
+import { Card, Button, Input } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import Note from './Note'
 import * as actions from '../actions'

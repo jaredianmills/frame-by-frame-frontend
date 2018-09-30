@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Form, Message, TextArea, Header, Modal } from 'semantic-ui-react'
+import { Button, Form, TextArea, Modal } from 'semantic-ui-react'
 import * as actions from '../actions'
 
 class NoteForm extends Component {

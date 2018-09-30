@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Button } from 'semantic-ui-react'
-// import { Redirect } from 'react-router'
-// import { Link, Route } from 'react-router-dom';
 import * as actions from '../actions'
-import withAuth from '../hoc/withAuth'
-import Project from './Project'
 import NewProjectForm from './NewProjectForm'
 
 class ProjectList extends Component {
-  constructor(props) {
-    super(props)
-  }
+
 
   handleProjectSelect = (project) => {
     this.props.selectProject(project)
@@ -43,7 +37,6 @@ class ProjectList extends Component {
               </React.Fragment>
             )
           })}
-        {/* </Menu> */}
       </div>
     )
   }

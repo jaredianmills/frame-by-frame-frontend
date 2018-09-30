@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Button, Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Sidebar } from 'semantic-ui-react'
 import ProjectList from './ProjectList'
 import ProjectPage from './ProjectPage'
-import Project from './Project'
 import { connect } from 'react-redux'
 
 import withAuth from '../hoc/withAuth'
@@ -16,9 +15,7 @@ class ProjectPageWithHideableSidebar extends Component {
           <Sidebar
             animation='overlay'
             style={{boxShadow: '-1px -1px 20px black'}}
-            vertical
             visible={this.props.visibleProjectList}
-            width='medium'
           >
             <ProjectList />
           </Sidebar>

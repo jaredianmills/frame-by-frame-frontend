@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-// import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
-// import store from './store'
 import Navbar from './components/Navbar'
-// import ProjectsPage from './components/ProjectsPage'
-import ProjectList from './components/ProjectList'
-import Project from './components/Project'
-import NoteForm from './components/NoteForm'
+
+
 import LoginForm from './components/LoginForm'
 import NotFound from './components/NotFound'
 import SignupForm from './components/SignupForm'
 import NewProjectForm from './components/NewProjectForm'
-import ProjectPage from './components/ProjectPage'
+
 
 import ProjectPageWithHideableSidebar from './components/ProjectPageWithHideableSidebar'
 

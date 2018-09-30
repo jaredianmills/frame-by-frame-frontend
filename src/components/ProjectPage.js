@@ -3,13 +3,9 @@ import { connect } from 'react-redux';
 import * as actions from '../actions'
 import withAuth from '../hoc/withAuth'
 import Project from './Project'
-import ProjectList from './ProjectList'
 import NewProjectForm from './NewProjectForm'
 
 class ProjectPage extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   handleProjectSelect = (project) => {
     this.props.selectProject(project)
@@ -27,7 +23,6 @@ class ProjectPage extends Component {
   render() {
     return (
       <div>
-        {/* <ProjectList /> */}
         {this.props.currentProject ? <Project /> : null}
         {this.displayNewProjectForm()}
       </div>

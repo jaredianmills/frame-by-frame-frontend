@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Form, Message, TextArea, Header, Modal, Loader, Card, Dimmer } from 'semantic-ui-react'
+import { Button, Modal, Loader, Card, Dimmer } from 'semantic-ui-react'
 import * as actions from '../actions'
 import Comment from './Comment'
 import CommentForm from './CommentForm'
 
 class Comments extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount = () => {
     this.props.fetchComments(this.props.currentNote.id)

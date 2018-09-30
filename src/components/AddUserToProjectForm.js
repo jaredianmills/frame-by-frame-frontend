@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Form, Message, Modal, Header } from 'semantic-ui-react'
+import { Button, Form, Message, Modal } from 'semantic-ui-react'
 import * as actions from '../actions'
 
 class AddUserToProjectForm extends Component {
