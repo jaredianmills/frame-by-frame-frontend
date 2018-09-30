@@ -40,7 +40,8 @@ body {
     top: relative;
     left: 0;
     /* background-color: lightblue; */
-    background-image: url("images/mochaGrunge.png");
+    /* background-image: url("images/mochaGrunge.png"); */
+    background-color: rgba(181, 181, 181, 0.3);
     /* overflow-x: hidden; */
     overflow: scroll;
     padding-top: 20px;

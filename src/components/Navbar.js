@@ -8,12 +8,15 @@ const Navbar = (props) => {
   const background = require(`../images/mochaGrunge.png`)
   return(
     <div>
-    <Menu style={{backgroundImage: `url(${background})`, boxShadow: '2px 2px 20px black', color: 'white', textShadow: '2px 2px 8px black'}}>
+    <Menu style={{
+
+      backgroundColor: 'rgba(17, 17, 17, 0.3)',
+      boxShadow: '2px 2px 20px black', color: 'white', textShadow: '2px 2px 8px black'}}>
       <Menu.Item>
         <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Frame by Frame</h1>
       </Menu.Item>
         {props.loggedIn ? <Menu.Item >
-          {props.loggedIn ? <Button inverted color='facebook' onClick={props.toggleProjectList}>{props.visibleProjectList ? 'Hide Projects' : 'View Projects'}</Button> : null}
+          {props.loggedIn ? <Button inverted color='facebook' style={{width: '130px'}} onClick={props.toggleProjectList}>{props.visibleProjectList ? 'Hide Projects' : 'View Projects'}</Button> : null}
         </Menu.Item> : null}
 
         {props.loggedIn ? <Menu.Item ><Button inverted color='facebook' onClick={props.renderNewProjectForm}>New Project</Button></Menu.Item> : null}
