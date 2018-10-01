@@ -37,7 +37,7 @@ class LoginForm extends Component {
   renderLoginForm = () => {
     return (
       <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '2px 2px 20px black', backgroundImage: `url(${background})`, textAlign: 'center'}}>
-        <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Login</h1>
+        <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Frame by Frame</h1>
         {this.props.error ? <Message style={{textAlign: 'center'}}error header='There was an error processing your request' content={this.props.error} /> : null}
         <Form onSubmit={this.handleSubmit}>
           <input type='text' name='email' placeholder='email' onChange={this.handleChange}/>

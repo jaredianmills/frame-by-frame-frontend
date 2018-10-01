@@ -11,7 +11,7 @@ class ProjectPageWithHideableSidebar extends Component {
 
     return (
       <React.Fragment>
-        <Sidebar.Pushable>
+        <Sidebar.Pushable style={{marginTop: '0.5%'}}>
           <Sidebar
             animation='overlay'
             style={{boxShadow: '-1px -1px 20px black'}}

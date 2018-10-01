@@ -37,11 +37,11 @@ class Video extends Component {
 
   handleStyleChange = () => {
     if (this.props.visibleProjectList) {
-      return {width: "48%", height: 'auto', marginLeft: '20%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 20px black', backgroundColor: 'rgba(181, 181, 181, 0.3)',
+      return {width: "48%", height: 'auto', marginLeft: '20%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 20px black', backgroundColor: 'rgba(181, 181, 181, 0.25)',
       transition: 'all .4s ease-out', }
     } else {
       return {width: "66%", height: 'auto', marginLeft: '2%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 20px black', backgroundColor: 'rgba(181, 181, 181, 0.3)',
-      transition: 'all .4s ease-in-out', }
+      transition: 'all .4s ease-out', }
     }
   }
 
