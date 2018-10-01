@@ -31,7 +31,6 @@ class NewProjectForm extends Component {
     data.append('video', this.state.video)
     data.append('user_id', this.state.user_id)
     this.props.createProject(data)
-    // this.props.postVideo(this.state)
   }
 
   renderDimmer = () => {
@@ -44,7 +43,6 @@ class NewProjectForm extends Component {
 
 
   render() {
-    console.log(this.state.video);
     return (
       <Modal open={this.props.displayNewProjectForm}>
         <Button style={{float: 'right'}} onClick={this.props.hideNewProjectForm}>x</Button>
@@ -88,42 +86,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewProjectForm)
-
-
-
-
-
-// {/* <Form onSubmit={this.handleSubmit}>
-//   <input
-//     name="title"
-//     type="text"
-//     placeholder="Project Title"
-//     value={this.state.title}
-//     onChange={this.handleChange}
-//   />
-//   {/* <input type="file" onChange={this.handleFileUpload} /> */}
-// <br/><br/>
-//   <Label
-//     as="label"
-//     basic
-//     htmlFor="upload"
-// >
-//     <Button
-//         icon="upload"
-//         label={{
-//             basic: true,
-//             content: 'Select file(s)'
-//         }}
-//         labelPosition="right"
-//     />
-//     <input
-//         hidden
-//         id="upload"
-//         multiple
-//         type="file"
-//         onChange={this.handleFileUpload}
-//     />
-// </Label>
-// <br/><br/>
-// <Form.Button content="Submit" />
-// </Form> */}

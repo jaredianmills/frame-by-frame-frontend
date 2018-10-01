@@ -319,7 +319,6 @@ export function createProject(project) {
     let configObj = {method: "POST", headers: {Authorization: `Bearer ${localStorage.getItem('jwt')}`}, body: project}
 
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/projects`, configObj).then(resp => resp.json()).then(newProject => {
-      console.log(newProject)
       dispatch({type: types.ADD_NEW_PROJECT_TO_PROJECTS_LIST, payload: newProject})
     })
   }

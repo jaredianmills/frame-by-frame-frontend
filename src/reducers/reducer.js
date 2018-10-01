@@ -117,7 +117,7 @@ const reducer = (state = initialState, action) => {
       return {...state, displayNewProjectForm: false, uploadingVideo: false}
 
     case types.ADD_NEW_PROJECT_TO_PROJECTS_LIST:
-      return {...state, user: {...state.user, projects: [...state.user.projects, action.payload]}, currentProject: action.payload, displayNewProjectForm: false}
+      return {...state, user: {...state.user, projects: [...state.user.projects, action.payload]}, currentProject: action.payload, displayNewProjectForm: false, uploadingVideo: false}
 
     case types.TOGGLE_PROJECT_LIST:
       return {...state, visibleProjectList: !state.visibleProjectList, videoPlayTime: null}
