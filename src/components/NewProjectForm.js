@@ -80,7 +80,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     hideNewProjectForm: () => {dispatch(actions.hideNewProjectForm())},
-    // postVideo: (project) => {dispatch(actions.postVideo(project))}
     createProject: (project) => {dispatch(actions.createProject(project))}
   }
 }

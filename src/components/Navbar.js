@@ -9,9 +9,10 @@ const Navbar = (props) => {
   return(
     <div>
     <Menu style={{
-
       backgroundColor: 'rgba(17, 17, 17, 0.3)',
-      boxShadow: '2px 2px 20px black', color: 'white', textShadow: '2px 2px 8px black'}}>
+      boxShadow: '2px 2px 20px black', color: 'white', textShadow: '2px 2px 8px black',
+      outline: '2px solid black'
+    }}>
       <Menu.Item>
         <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Frame by Frame</h1>
       </Menu.Item>

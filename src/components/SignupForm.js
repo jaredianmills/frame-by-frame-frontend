@@ -38,8 +38,8 @@ class SignupForm extends Component {
 
   renderSignUpForm = () => {
     return (
-      <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '2px 2px 20px black', backgroundImage: `url(${background})`, textAlign: 'center'}}>
-        <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Sign Up</h1>
+      <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '2px 2px 20px black', backgroundImage: `url(${background})`, textAlign: 'center', outline: '2px solid black'}}>
+        <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Frame by Frame</h1>
         <Form onSubmit={this.handleSubmit}>
           <input type='text' name='first_name' placeholder='First Name' onChange={this.handleChange}/>
           <br/>
