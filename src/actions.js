@@ -278,46 +278,52 @@ export function hideNewProjectForm() {
   return {type: types.HIDE_NEW_PROJECT_FORM}
 }
 
-export function postVideo(project) {
-
-  return (dispatch) => {
-    dispatch({ type: types.UPLOADING_VIDEO })
-    const config = {
-      bucketName: process.env.REACT_APP_BUCKET,
-      dirName: 'videos',
-      region: process.env.REACT_APP_REGION,
-      accessKeyId: process.env.REACT_APP_ACCESS_KEY,
-      secretAccessKey: process.env.REACT_APP_SECRET
-    }
-
-    uploadFile(project.file, config)
-      .then(response => {
-        if (response.result.ok) {
-          return response
-        } else {
-          throw response
-        }
-      })
-      .then(JSONResponse => {
-        let formBody = {title: project.title, video_url: JSONResponse.location, user_id: project.user_id}
-        let configObj = {method: "POST", headers: {"Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem('jwt')}`}, body: JSON.stringify(formBody)}
-        fetch(`${process.env.REACT_APP_API_ENDPOINT}/projects`, configObj).then(resp => resp.json())
-        .then(newProject => dispatch({type: types.ADD_NEW_PROJECT_TO_PROJECTS_LIST, payload: newProject}))
-      })
-      .catch(err => console.error(err))
-  }
-}
+// export function postVideo(project) {
+//
+//   return (dispatch) => {
+//     dispatch({ type: types.UPLOADING_VIDEO })
+//     const config = {
+//       bucketName: process.env.REACT_APP_BUCKET,
+//       dirName: 'videos',
+//       region: process.env.REACT_APP_REGION,
+//       accessKeyId: process.env.REACT_APP_ACCESS_KEY,
+//       secretAccessKey: process.env.REACT_APP_SECRET
+//     }
+//
+//     uploadFile(project.file, config)
+//       .then(response => {
+//         if (response.result.ok) {
+//           return response
+//         } else {
+//           throw response
+//         }
+//       })
+//       .then(JSONResponse => {
+//         let formBody = {title: project.title, video_url: JSONResponse.location, user_id: project.user_id}
+//         let configObj = {method: "POST", headers: {"Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem('jwt')}`}, body: JSON.stringify(formBody)}
+//         fetch(`${process.env.REACT_APP_API_ENDPOINT}/projects`, configObj).then(resp => resp.json())
+//         .then(newProject => dispatch({type: types.ADD_NEW_PROJECT_TO_PROJECTS_LIST, payload: newProject}))
+//       })
+//       .catch(err => console.error(err))
+//   }
+// }
 
 export function toggleProjectList() {
   return {type: types.TOGGLE_PROJECT_LIST}
 }
 
-// export function createProject(project, videoURL) {
-//   let formBody = {title: project.title, video_url: videoURL, user_id: project.user_id}
-//   let configObj = {method: "POST", headers: {"Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem('jwt')}`}, body: JSON.stringify(formBody)}
-//
-//   fetch(`${process.env.REACT_APP_API_ENDPOINT}/projects`, configObj).then(resp => resp.json()).then(newProject => addNewProject(newProject))
-// }
+export function createProject(project) {
+  return (dispatch) => {
+    dispatch({ type: types.UPLOADING_VIDEO })
+    // let formBody = {title: project.title, video: project.video, user_id: project.user_id}
+    let configObj = {method: "POST", headers: {Authorization: `Bearer ${localStorage.getItem('jwt')}`}, body: project}
+
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/projects`, configObj).then(resp => resp.json()).then(newProject => {
+      console.log(newProject)
+      dispatch({type: types.ADD_NEW_PROJECT_TO_PROJECTS_LIST, payload: newProject})
+    })
+  }
+}
 
 // export function addNewProject(newProject) {
 //   return {

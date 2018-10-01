@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Form, Button, Label, Modal, Message, Dimmer, Loader } from 'semantic-ui-react'
+import { Form, Button, Label, Modal, Message, Dimmer, Loader, Icon} from 'semantic-ui-react'
 import * as actions from '../actions'
 
 
@@ -10,14 +10,14 @@ class NewProjectForm extends Component {
 
     this.state = {
       title: '',
-      file: null,
+      video: null,
       user_id: this.props.user.id
     }
   }
 
   handleFileAdd = (event) => {
-    let file = event.target.files[0]
-    this.setState({...this.state, file: file})
+    let video = event.target.files[0]
+    this.setState({...this.state, video: video})
   }
 
   handleChange = (event) => {
@@ -26,7 +26,12 @@ class NewProjectForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.postVideo(this.state)
+    let data = new FormData()
+    data.append('title', this.state.title)
+    data.append('video', this.state.video)
+    data.append('user_id', this.state.user_id)
+    this.props.createProject(data)
+    // this.props.postVideo(this.state)
   }
 
   renderDimmer = () => {
@@ -39,6 +44,7 @@ class NewProjectForm extends Component {
 
 
   render() {
+    console.log(this.state.video);
     return (
       <Modal open={this.props.displayNewProjectForm}>
         <Button style={{float: 'right'}} onClick={this.props.hideNewProjectForm}>x</Button>
@@ -56,8 +62,11 @@ class NewProjectForm extends Component {
               <Button icon="upload" label={{basic: true, content: 'Select file'}} labelPosition="right" />
               <input hidden id="upload" type="file" onChange={this.handleFileAdd} />
             </Label>
+            {this.state.video ?
+              <div style={{width: '30%'}}><br/><Message color='blue'><Icon name='file video'/>{this.state.video.name}</Message></div>
+              : null}
             <br/><br/>
-            <Button>Submit</Button>
+            <Button basic color='blue'>Submit</Button>
           </Form>
         </Modal.Content>
       </Modal>
@@ -73,7 +82,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     hideNewProjectForm: () => {dispatch(actions.hideNewProjectForm())},
-    postVideo: (project) => {dispatch(actions.postVideo(project))}
+    // postVideo: (project) => {dispatch(actions.postVideo(project))}
+    createProject: (project) => {dispatch(actions.createProject(project))}
   }
 }
 
