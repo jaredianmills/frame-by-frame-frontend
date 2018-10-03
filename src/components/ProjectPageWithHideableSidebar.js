@@ -7,26 +7,35 @@ import { connect } from 'react-redux'
 import withAuth from '../hoc/withAuth'
 
 class ProjectPageWithHideableSidebar extends Component {
+
+  handleStyle = () => {
+    if (this.props.currentProject) {
+      return {height: '86.5vh'}
+    } else {
+      return {height: '90vh'}
+    }
+  }
+
   render() {
 
     return (
-      <React.Fragment>
-        <Sidebar.Pushable style={{marginTop: '0.5%'}}>
+      <div>
+        <Sidebar.Pushable >
           <Sidebar
             animation='overlay'
-            style={{boxShadow: '-1px -1px 20px black'}}
+            style={{boxShadow: '-1px -1px 10px black'}}
             visible={this.props.visibleProjectList}
           >
             <ProjectList />
           </Sidebar>
 
           <Sidebar.Pusher>
-            <div style={{height: '90vh'}}>
+            <div style={this.handleStyle()}>
             <ProjectPage/>
           </div>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
-      </React.Fragment>
+      </div>
     )
   }
 }

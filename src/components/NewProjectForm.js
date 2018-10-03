@@ -61,7 +61,13 @@ class NewProjectForm extends Component {
               <input hidden id="upload" type="file" onChange={this.handleFileAdd} />
             </Label>
             {this.state.video ?
-              <div style={{width: '30%'}}><br/><Message color='blue'><Icon name='file video'/>{this.state.video.name}</Message></div>
+              <React.Fragment>
+                <br/>
+                <Message color='blue' style={{height: '20%'}}>
+                  <Icon name='file video'/>
+                  {this.state.video.name}
+                </Message>
+              </React.Fragment>
               : null}
             <br/><br/>
             <Button basic color='blue'>Submit</Button>

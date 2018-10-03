@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar style={{zIndex: 10}}/>
+        <Navbar />
         <Switch>
           <Route exact path="/" render={ () => <Redirect to="/projects" /> } />
           <Route exact path="/projects" component={ProjectPageWithHideableSidebar} />

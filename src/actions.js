@@ -1,7 +1,4 @@
 import * as types from './types'
-import { uploadFile } from 'react-s3'
-// import React from 'react'
-// import { Redirect } from 'react-router'
 
 require('dotenv').config()
 
@@ -265,7 +262,6 @@ export function toggleNoteComplete(note) {
     }
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/notes/${note.id}`, configObj)
     .then(response => response.json())
-    // .then(updatedNote => console.log(updatedNote))
     .then(updatedNote => dispatch({ type: types.TOGGLE_NOTE_COMPLETE, payload: updatedNote }))
   }
 }
@@ -278,35 +274,6 @@ export function hideNewProjectForm() {
   return {type: types.HIDE_NEW_PROJECT_FORM}
 }
 
-// export function postVideo(project) {
-//
-//   return (dispatch) => {
-//     dispatch({ type: types.UPLOADING_VIDEO })
-//     const config = {
-//       bucketName: process.env.REACT_APP_BUCKET,
-//       dirName: 'videos',
-//       region: process.env.REACT_APP_REGION,
-//       accessKeyId: process.env.REACT_APP_ACCESS_KEY,
-//       secretAccessKey: process.env.REACT_APP_SECRET
-//     }
-//
-//     uploadFile(project.file, config)
-//       .then(response => {
-//         if (response.result.ok) {
-//           return response
-//         } else {
-//           throw response
-//         }
-//       })
-//       .then(JSONResponse => {
-//         let formBody = {title: project.title, video_url: JSONResponse.location, user_id: project.user_id}
-//         let configObj = {method: "POST", headers: {"Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem('jwt')}`}, body: JSON.stringify(formBody)}
-//         fetch(`${process.env.REACT_APP_API_ENDPOINT}/projects`, configObj).then(resp => resp.json())
-//         .then(newProject => dispatch({type: types.ADD_NEW_PROJECT_TO_PROJECTS_LIST, payload: newProject}))
-//       })
-//       .catch(err => console.error(err))
-//   }
-// }
 
 export function toggleProjectList() {
   return {type: types.TOGGLE_PROJECT_LIST}
@@ -324,9 +291,34 @@ export function createProject(project) {
   }
 }
 
-// export function addNewProject(newProject) {
-//   return {
-//     type: types.ADD_NEW_PROJECT_TO_PROJECTS_LIST,
-//     payload: newProject
-//   }
-// }
+export function displayTimecode(timecode) {
+  let minutes = Math.floor(timecode / 60)
+  let hours = Math.floor(minutes / 60)
+  let seconds = Math.round(timecode - minutes * 60)
+
+  if (hours > 0) {
+    minutes = minutes - (hours * 60)
+  }
+
+  hours = hours.toString()
+  minutes = minutes.toString()
+  seconds = seconds.toString()
+
+  if (hours.length < 2) {
+    hours = `0${hours}`
+  }
+
+  if (minutes.length < 2) {
+    minutes = `0${minutes}`
+  }
+
+  if (seconds.length < 2) {
+    seconds = `0${seconds}`
+  }
+
+  // hours.length > 1 ? hours : hours = "0" + hours
+  // minutes.length > 1 ? minutes : minutes = "0" + minutes
+  // seconds.length > 1 ? seconds : seconds = "0" + seconds
+
+  return `${hours}:${minutes}:${seconds}`
+}

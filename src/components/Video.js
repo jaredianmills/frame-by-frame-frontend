@@ -11,7 +11,7 @@ import { Player,
   PlaybackRateMenuButton
 } from 'video-react'
 
-const background = require(`../images/wild_oliva.png`)
+const background = require(`../images/debut_dark.png`)
 
 class Video extends Component {
 
@@ -37,11 +37,11 @@ class Video extends Component {
 
   handleStyleChange = () => {
     if (this.props.visibleProjectList) {
-      return {width: "48%", height: 'auto', marginLeft: '20%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 20px black', backgroundColor: 'rgba(181, 181, 181, 0.25)', outline: '2px solid black',
+      return {width: "48%", height: 'auto', marginLeft: '20%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 10px black', backgroundImage: `url(${background})`, backgroundSize: 'auto', outline: '2px solid black', position: 'relative',
       transition: 'all .4s ease-out', }
     } else {
-      return {width: "66%", height: 'auto', marginLeft: '2%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 20px black', backgroundColor: 'rgba(181, 181, 181, 0.3)', outline: '2px solid black',
-      transition: 'all .4s ease-out', }
+      return {width: "66%", height: 'auto', marginLeft: '2%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 10px black', backgroundImage: `url(${background})`, outline: '2px solid black', position: 'relative',
+      transition: 'all .4s ease-in-out', }
     }
   }
 

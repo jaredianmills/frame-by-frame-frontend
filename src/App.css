@@ -39,32 +39,32 @@ body {
     z-index: 1;
     top: relative;
     left: 0;
-    /* background-color: lightblue; */
-    /* background-image: url("images/mochaGrunge.png"); */
-    background-color: rgba(181, 181, 181, 0.25);
+    /* background-color: white; */
+    /* background-color: rgba(181, 181, 181, 0.25); */
+    background-image: url("images/debut_dark.png");
     /* overflow-x: hidden; */
     overflow: scroll;
     padding-top: 20px;
     padding: 0.5%;
-    box-shadow: -1px 1px 20px black;
+    /* box-shadow: -1px 1px 20px black; */
     margin-top: 1.5%;
 }
 
 .notelist {
-  height: 95%;
+  height: 100%;
   width: 30%;
   position: fixed;
   z-index: 1;
   top: relative;
   right: 0;
-  background-color: rgba(181, 181, 181, 0.25);
-  /* background-image: url("images/mochaGrunge.png"); */
+  /* background-color: rgba(181, 181, 181, 0.25); */
+  background-image: url("images/debut_dark.png");
   /* background-color: lightblue; */
   /* overflow-x: hidden; */
   overflow: scroll;
   padding-top: 20px;
   padding: 0.5%;
-  box-shadow: -1px 1px 20px black;
+  box-shadow: -1px 1px 10px black;
   outline: 2px solid black;
   text-align: center;
 }

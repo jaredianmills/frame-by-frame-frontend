@@ -30,7 +30,7 @@ class CommentForm extends Component {
         <Form.Field>
           <input name="content" value={this.state.content} placeholder='Add Comment' onChange={this.handleChange}/>
         </Form.Field>
-        <Button type="submit">Post Comment</Button>
+        <Button basic color="blue" type="submit">Post Comment</Button>
       </Form>
     )
   }

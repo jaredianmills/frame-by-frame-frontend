@@ -5,7 +5,7 @@ import * as actions from '../actions'
 import { withRouter, Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 
-const background = require(`../images/binding_light.png`)
+const background = require(`../images/debut_dark.png`)
 
 class LoginForm extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class LoginForm extends Component {
 
   renderLoginForm = () => {
     return (
-      <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '2px 2px 20px black', backgroundImage: `url(${background})`, textAlign: 'center', outline: '2px solid black'}}>
+      <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '2px 2px 10px black', backgroundImage: `url(${background})`, textAlign: 'center', outline: '2px solid black', color: 'white', textShadow: '1px 1px 2px black'}}>
         <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Frame by Frame</h1>
         {this.props.error ? <Message style={{textAlign: 'center'}}error header='There was an error processing your request' content={this.props.error} /> : null}
         <Form onSubmit={this.handleSubmit}>

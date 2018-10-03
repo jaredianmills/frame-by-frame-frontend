@@ -23,6 +23,7 @@ class ProjectList extends Component {
   render() {
     return (
       <div className="projectlist">
+        {/* <div style={{backgroundColor: 'rgba(181, 181, 181, 0.25)', height: '100%'}}> */}
         <h1 style={{textAlign: 'center', color: 'white', textShadow: '2px 2px 8px black'}}>Projects</h1>
         <hr/>
         {/* <Menu inverted pointing vertical> */}
@@ -37,6 +38,7 @@ class ProjectList extends Component {
               </React.Fragment>
             )
           })}
+        {/* </div> */}
       </div>
     )
   }
