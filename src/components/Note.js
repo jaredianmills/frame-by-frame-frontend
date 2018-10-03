@@ -22,7 +22,7 @@ class Note extends Component {
 
   render() {
     return (
-      <Card style={{margin: '1%', width: '100%'}}>
+      <Card style={{margin: '1%', width: '100%', fontFamily: 'Krub, sans-serif'}}>
         <Card.Content>
           <Card.Header>{`${this.props.note.user.first_name} ${this.props.note.user.last_name}`} says</Card.Header>
           <Card.Description>{this.props.note.content}</Card.Description>
@@ -31,17 +31,19 @@ class Note extends Component {
           <br/>
 
           <Button size='tiny' animated basic color='blue' onClick={this.goToNote}>
-            <Button.Content visible > Go to Note </Button.Content>
+            <Button.Content visible style={{fontFamily: 'Merriweather, serif'}}> Go to Note </Button.Content>
             <Button.Content hidden> <Icon name='video play'/> </Button.Content>
           </Button>
 
           <Button size='tiny' animated basic color='blue' onClick={this.viewComments}>
-            <Button.Content visible> Comments ({this.props.numberOfComments}) </Button.Content>
-            <Button.Content hidden> <Icon name='comments'/> </Button.Content>
+            <Button.Content visible > Comments ({this.props.numberOfComments}) </Button.Content>
+            <Button.Content hidden style={{fontFamily: 'Merriweather, serif'}}>
+              <Icon name='comments'/>
+            </Button.Content>
           </Button>
 
           <Button size='tiny' animated basic color='blue' onClick={() => this.props.toggleNoteComplete(this.props.note)}>
-            <Button.Content visible>
+            <Button.Content visible style={{fontFamily: 'Merriweather, serif'}}>
               {this.props.note.completed ? 'Mark Incomplete' : 'Mark Complete'}
             </Button.Content>
             <Button.Content hidden>

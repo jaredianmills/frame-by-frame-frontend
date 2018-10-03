@@ -24,13 +24,13 @@ class ProjectList extends Component {
     return (
       <div className="projectlist">
         {/* <div style={{backgroundColor: 'rgba(181, 181, 181, 0.25)', height: '100%'}}> */}
-        <h1 style={{textAlign: 'center', color: 'white', textShadow: '2px 2px 8px black'}}>Projects</h1>
+        <h1 style={{textAlign: 'center', color: 'white', textShadow: '2px 2px 8px black', fontFamily: 'Merriweather, serif'}}>Projects</h1>
         <hr/>
         {/* <Menu inverted pointing vertical> */}
           {this.props.user.projects.map(project => {
             return (
               <React.Fragment key={project.id}>
-                <Button inverted color='facebook' style={{textAlign: 'center', margin: 'auto', width: '100%'}} name={project.title} onClick={() => this.handleProjectSelect(project)}>
+                <Button inverted color='facebook' style={{textAlign: 'center', margin: 'auto', width: '100%', fontFamily: 'Merriweather, serif'}} name={project.title} onClick={() => this.handleProjectSelect(project)}>
                   {project.title}
                 </Button>
                 <br/>

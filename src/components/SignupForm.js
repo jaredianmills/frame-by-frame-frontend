@@ -39,8 +39,8 @@ class SignupForm extends Component {
   renderSignUpForm = () => {
     return (
       <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '2px 2px 10px black', backgroundImage: `url(${background})`, textAlign: 'center', outline: '2px solid black', color: 'white', textShadow: '1px 1px 2px black'}}>
-        <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Frame by Frame</h1>
-        <Form onSubmit={this.handleSubmit}>
+        <h1 style={{color: 'white', textShadow: '2px 2px 8px black', fontFamily: 'Merriweather, serif'}}>Frame by Frame</h1>
+        <Form onSubmit={this.handleSubmit} >
           <input type='text' name='first_name' placeholder='First Name' onChange={this.handleChange}/>
           <br/>
           <input type='text' name='last_name' placeholder='Last Name' onChange={this.handleChange}/>
@@ -50,9 +50,9 @@ class SignupForm extends Component {
           <input type='password' name='password' placeholder='password' onChange={this.handleChange}/>
           <br/>
           <br/>
-          <Button inverted color='facebook' type='submit'>Sign Up</Button>
+          <Button inverted color='facebook' type='submit' style={{fontFamily: 'Merriweather, serif'}}>Sign Up</Button>
         </Form>
-        <h5>Already a member? <Link to='/login'>Log In</Link></h5>
+        <h5 style={{fontFamily: 'Merriweather, serif'}}>Already a member? <Link to='/login'>Log In</Link></h5>
       </div>
     )
   }

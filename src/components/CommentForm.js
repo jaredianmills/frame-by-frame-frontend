@@ -28,9 +28,9 @@ class CommentForm extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Field>
-          <input name="content" value={this.state.content} placeholder='Add Comment' onChange={this.handleChange}/>
+          <input style={{fontFamily: 'Merriweather, serif'}} name="content" value={this.state.content} placeholder='Add Comment' onChange={this.handleChange}/>
         </Form.Field>
-        <Button basic color="blue" type="submit">Post Comment</Button>
+        <Button style={{fontFamily: 'Merriweather, serif'}} basic color="blue" type="submit">Post Comment</Button>
       </Form>
     )
   }

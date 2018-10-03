@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Form, Message, Modal } from 'semantic-ui-react'
+import { Button, Form, Message, Modal, Icon } from 'semantic-ui-react'
 import * as actions from '../actions'
 
 class AddUserToProjectForm extends Component {
@@ -25,25 +25,24 @@ class AddUserToProjectForm extends Component {
 
   render() {
     return (
-      // <div style={{width: "50%", height: 'auto', marginLeft: '3%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 5px grey', backgroundColor: 'lightblue'}}>
       <Modal open={this.props.displayAddUserToProjectForm}>
-        <Button style={{float: 'right'}} onClick={this.props.hideAddUserForm}>x</Button>
+        <Button icon basic color="blue" style={{float: 'right', marginTop: '0.5%'}} onClick={this.props.hideAddUserForm}>
+          <Icon name='times' />
+        </Button>
         <Modal.Content>
-          {/* <h3 style={{marginLeft: '32%'}}>Add a User to this Project</h3> */}
           <Modal.Header>
-            <h1>Add a User to this Project</h1>
+            <h1 style={{fontFamily: 'Merriweather, serif'}}>Add a User to this Project</h1>
           </Modal.Header>
           <br/>
-          {this.props.error ? <Message style={{textAlign: 'center'}}error header='There was an error processing your request' content={this.props.error} /> : null}
+          {this.props.error ? <Message style={{textAlign: 'center', fontFamily: 'Merriweather, serif'}}error header='There was an error processing your request' content={this.props.error} /> : null}
           <Form onSubmit={this.handleSubmit}>
-            <input type='text' name='userEmail' placeholder='enter user email address' value={this.state.userEmail} onChange={this.handleChange} />
+            <input type='text' name='userEmail' placeholder='enter user email address' value={this.state.userEmail} onChange={this.handleChange} style={{fontFamily: 'Merriweather, serif'}} />
             <br/>
             <br/>
-            <Button basic color='blue'>Submit</Button>
+            <Button basic color='blue' style={{fontFamily: 'Merriweather, serif'}}>Submit</Button>
           </Form>
         </Modal.Content>
       </Modal>
-       // </div>
     )
   }
 }

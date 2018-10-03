@@ -37,17 +37,17 @@ class LoginForm extends Component {
   renderLoginForm = () => {
     return (
       <div style={{width: "30%", height: 'auto', marginLeft: '35%', marginTop: '10%', padding: '1%', boxShadow: '2px 2px 10px black', backgroundImage: `url(${background})`, textAlign: 'center', outline: '2px solid black', color: 'white', textShadow: '1px 1px 2px black'}}>
-        <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>Frame by Frame</h1>
+        <h1 style={{color: 'white', textShadow: '2px 2px 8px black', fontFamily: 'Merriweather, serif'}}>Frame by Frame</h1>
         {this.props.error ? <Message style={{textAlign: 'center'}}error header='There was an error processing your request' content={this.props.error} /> : null}
         <Form onSubmit={this.handleSubmit}>
-          <input type='text' name='email' placeholder='email' onChange={this.handleChange}/>
+          <input style={{fontFamily: 'Merriweather, serif'}} type='text' name='email' placeholder='email' onChange={this.handleChange}/>
           <br/>
-          <input type='password' name='password' placeholder='password' onChange={this.handleChange}/>
+          <input style={{fontFamily: 'Merriweather, serif'}} type='password' name='password' placeholder='password' onChange={this.handleChange}/>
           <br/>
           <br/>
-          <Button inverted color="facebook" type='submit'>Login</Button>
+          <Button style={{fontFamily: 'Merriweather, serif'}} inverted color="facebook" type='submit'>Login</Button>
         </Form>
-        <h5>Not a member? <Link to='/signup'>Sign Up</Link></h5>
+        <h5 style={{fontFamily: 'Merriweather, serif'}}>Not a member? <Link to='/signup'>Sign Up</Link></h5>
       </div>
     )
   }

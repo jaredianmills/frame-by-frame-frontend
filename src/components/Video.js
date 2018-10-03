@@ -37,10 +37,10 @@ class Video extends Component {
 
   handleStyleChange = () => {
     if (this.props.visibleProjectList) {
-      return {width: "48%", height: 'auto', marginLeft: '20%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 10px black', backgroundImage: `url(${background})`, backgroundSize: 'auto', outline: '2px solid black', position: 'relative',
+      return {width: "45%", height: 'auto', position: 'absolute', left: '21.5%', marginTop: '1%', padding: '1%', boxShadow: '1px 1px 10px black', backgroundImage: `url(${background})`, outline: '2px solid black',
       transition: 'all .4s ease-out', }
     } else {
-      return {width: "66%", height: 'auto', marginLeft: '2%', marginTop: '2%', padding: '1%', boxShadow: '1px 1px 10px black', backgroundImage: `url(${background})`, outline: '2px solid black', position: 'relative',
+      return {width: "63%", height: 'auto', position: 'absolute', left: '3%', marginTop: '1%', padding: '1%', boxShadow: '1px 1px 10px black', backgroundImage: `url(${background})`, outline: '2px solid black',
       transition: 'all .4s ease-in-out', }
     }
   }
@@ -48,7 +48,7 @@ class Video extends Component {
     render() {
       return(
         <div style={this.handleStyleChange()}>
-          <h1 style={{color: 'white', textShadow: '2px 2px 8px black'}}>{this.props.project.title}</h1>
+          <h1 style={{color: 'white', textShadow: '2px 2px 8px black', fontFamily: 'Merriweather, serif'}}>{this.props.project.title}</h1>
           <Player
             ref="player"
             src={this.props.project.video_url}
@@ -66,8 +66,8 @@ class Video extends Component {
               />
             </ControlBar>
           </Player>
-          <Button inverted color='facebook' style={{margin: '2%  2% 1% 0%'}} onClick={this.addNote}>Add a Note</Button>
-          <Button inverted color='facebook' style={{margin: '2%  0% 1% 0%'}} onClick={this.addUser}>Add User to Project</Button>
+          <Button inverted color='facebook' style={{margin: '2%  2% 1% 1%', fontFamily: 'Merriweather, serif'}} onClick={this.addNote}>Add a Note</Button>
+          <Button inverted color='facebook' style={{margin: '2%  0% 1% 1%', fontFamily: 'Merriweather, serif'}} onClick={this.addUser}>Add User to Project</Button>
         </div>
       )
     }

@@ -45,7 +45,9 @@ class NewProjectForm extends Component {
   render() {
     return (
       <Modal open={this.props.displayNewProjectForm}>
-        <Button style={{float: 'right'}} onClick={this.props.hideNewProjectForm}>x</Button>
+        <Button icon basic color="blue" style={{float: 'right', marginTop: '0.5%'}} onClick={this.props.hideNewProjectForm}>
+          <Icon name='times' />
+        </Button>
         <Modal.Content>
           <Modal.Header>
             <h1>Create a New Project</h1>

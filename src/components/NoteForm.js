@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Form, TextArea, Modal } from 'semantic-ui-react'
+import { Button, Form, TextArea, Modal, Icon } from 'semantic-ui-react'
 import * as actions from '../actions'
 
 class NoteForm extends Component {
@@ -30,12 +30,14 @@ class NoteForm extends Component {
     console.log(this.props);
     return (
       <Modal open={this.props.displayNoteForm}>
-        <Button style={{float: 'right'}} onClick={this.props.hideNoteForm}>x</Button>
+        <Button icon basic color="blue" style={{float: 'right', marginTop: '0.5%'}} onClick={this.props.hideNoteForm}>
+          <Icon name='times' />
+        </Button>
         <Modal.Content>
-          <Modal.Header><h1>Add a New Note</h1></Modal.Header>
+          <Modal.Header><h1 style={{fontFamily: 'Merriweather, serif'}}>Add a New Note</h1></Modal.Header>
           <h5 style={{textAlign: 'center'}}>Timecode: {actions.displayTimecode(this.props.currentVideoTime)}</h5>
           <Form onSubmit={this.handleSubmit}>
-            <Form.Field control={TextArea} name='content' placeholder='Add new note' value={this.state.note} onChange={this.handleChange} />
+            <Form.Field style={{fontFamily: 'Merriweather, serif'}} control={TextArea} name='content' placeholder='Add new note' value={this.state.note} onChange={this.handleChange} />
             <Button basic color='blue'>Submit</Button>
           </Form>
         </Modal.Content>
