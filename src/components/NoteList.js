@@ -37,7 +37,7 @@ class NoteList extends Component {
   render() {
     return (
       <div className='notelist'>
-        <h1 style={{textAlign: 'center', color: 'white', textShadow: '2px 2px 8px black', fontFamily: 'Merriweather, serif'}}>Notes</h1>
+        <h1 style={{textAlign: 'center', color: 'white', textShadow: '2px 2px 8px black'}}>Notes</h1>
         <Button inverted color='facebook' style={{fontFamily: 'Merriweather, serif'}} onClick={this.props.toggleCompletedNoteDisplay}>{this.props.displayCompletedNotes ? 'Hide Completed Notes' : 'Show Completed Notes'}</Button>
         <br/><br/>
         <Input style={{width: '100%', fontFamily: 'Merriweather, serif'}} placeholder="Search Notes"value={this.state.searchTerm} onChange={this.handleSearchChange}/>

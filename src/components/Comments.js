@@ -13,7 +13,7 @@ class Comments extends Component {
 
   renderComments = () => {
     if (this.props.comments.length > 0) {
-      return this.props.comments.map(comment => <Comment key={comment.id} comment={comment} style={{fontFamily: 'Merriweather, serif'}}/>)
+      return this.props.comments.map(comment => <Comment key={comment.id} comment={comment} />)
     } else {
       return <h2 style={{fontFamily: 'Merriweather, serif'}}>There are no comments on this note</h2>
     }
@@ -40,7 +40,7 @@ class Comments extends Component {
             <Card.Content>
               <h3>Note:</h3>
               <Card.Header>{`${this.props.currentNote.user.first_name} ${this.props.currentNote.user.last_name} says:`}</Card.Header>
-              <Card.Description style={{fontFamily: 'Merriweather, serif'}}>{this.props.currentNote.content}</Card.Description>
+              <Card.Description>{this.props.currentNote.content}</Card.Description>
             </Card.Content>
           </Card>
           <h3 style={{fontFamily: 'Merriweather, serif'}}>Comments:</h3>

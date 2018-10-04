@@ -24,7 +24,7 @@ export function createUser(userLogin) {
         localStorage.setItem('jwt', JSONResponse.jwt)
         dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
       })
-      .catch(r => r.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.message })))
+      .catch(r => r.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.error })))
   }
 }
 

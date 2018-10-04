@@ -22,12 +22,12 @@ class Note extends Component {
 
   render() {
     return (
-      <Card style={{margin: '1%', width: '100%', fontFamily: 'Krub, sans-serif'}}>
+      <Card style={{margin: '1%', width: '100%'}}>
         <Card.Content>
-          <Card.Header>{`${this.props.note.user.first_name} ${this.props.note.user.last_name}`} says</Card.Header>
-          <Card.Description>{this.props.note.content}</Card.Description>
-          <Card.Meta>Timecode: {actions.displayTimecode(this.props.note.timecode)}</Card.Meta>
-          <Card.Meta>Status: {this.props.note.completed ? 'Completed' : 'Not Completed'}</Card.Meta>
+          <Card.Header style={{fontFamily: 'Oswald, sans-serif'}}>{`${this.props.note.user.first_name} ${this.props.note.user.last_name}`} says</Card.Header>
+          <Card.Description style={{fontFamily: 'Roboto, sans-serif'}}>{this.props.note.content}</Card.Description>
+          <Card.Meta style={{fontFamily: 'Oswald, sans-serif'}}>Timecode: {actions.displayTimecode(this.props.note.timecode)}</Card.Meta>
+          <Card.Meta style={{fontFamily: 'Oswald, sans-serif'}}>Status: {this.props.note.completed ? 'Completed' : 'Not Completed'}</Card.Meta>
           <br/>
 
           <Button size='tiny' animated basic color='blue' onClick={this.goToNote}>
