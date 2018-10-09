@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
-import { withRouter, Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 
 const background = require(`../images/debut_dark.png`)
@@ -18,9 +17,4 @@ const NotFound = () => {
   )
 }
 
-const handleClick = () => {
-  console.log('clicked');
-  return <Redirect to="/projects" />
-}
-
-export default withRouter(NotFound)
+export default NotFound

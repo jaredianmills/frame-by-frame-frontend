@@ -37,10 +37,10 @@ class Video extends Component {
 
   handleStyleChange = () => {
     if (this.props.visibleProjectList) {
-      return {width: "45%", height: 'auto', position: 'absolute', left: '21.5%', marginTop: '1%', padding: '1%', boxShadow: '1px 1px 10px black', backgroundImage: `url(${background})`, outline: '2px solid black',
+      return {width: "45%", height: 'auto', position: 'absolute', left: '20%', marginTop: '1%', padding: '1%', boxShadow: '1px 1px 10px black', backgroundImage: `url(${background})`, outline: '2px solid black',
       transition: 'all .4s ease-out', }
     } else {
-      return {width: "63%", height: 'auto', position: 'absolute', left: '3%', marginTop: '1%', padding: '1%', boxShadow: '1px 1px 10px black', backgroundImage: `url(${background})`, outline: '2px solid black',
+      return {width: "66%", height: 'auto', position: 'absolute', left: '2%', marginTop: '1%', padding: '1%', boxShadow: '1px 1px 10px black', backgroundImage: `url(${background})`, outline: '2px solid black',
       transition: 'all .4s ease-in-out', }
     }
   }
