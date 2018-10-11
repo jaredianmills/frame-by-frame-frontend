@@ -53,7 +53,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     postNote: (note) => {dispatch(actions.postNote(note))},
-    addNote: (note, API) => {dispatch(actions.addNote(note, API))},
+    addNote: (note) => {dispatch(actions.addNote(note))},
     hideNoteForm: () => {dispatch(actions.hideNoteForm())},
   }
 }

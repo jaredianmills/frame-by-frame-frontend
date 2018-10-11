@@ -5,9 +5,14 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store'
 import Root from './components/Root'
+import { ActionCableProvider } from 'react-actioncable-provider';
 
 require('dotenv').config()
 
 
-ReactDOM.render(<Root store={store} />, document.getElementById('root'));
+ReactDOM.render(
+  <ActionCableProvider url={process.env.REACT_APP_API_WS_ROOT}>
+    <Root store={store} />
+  </ActionCableProvider>,
+  document.getElementById('root'));
 registerServiceWorker();

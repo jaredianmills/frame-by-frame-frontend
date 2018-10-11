@@ -6,9 +6,9 @@ import NoteList from './NoteList'
 import AddUserToProjectForm from './AddUserToProjectForm'
 import Comments from './Comments'
 import * as actions from '../actions'
+import { ActionCable } from 'react-actioncable-provider';
 
 class Project extends Component {
-
 
   componentDidMount = () => {
     this.props.fetchProject(this.props.currentProject.id)
@@ -22,16 +22,26 @@ class Project extends Component {
     }
   }
 
+  handleReceivedProjectData = (response) => {
+    if (response.note.project.id === this.props.currentProject.id) {
+      this.props.addNote(response.note)
+    }
+  }
+
 
   render() {
     return (
       <div style={{marginTop: '1%'}}>
-        <NoteList notes={this.props.currentProject.notes} />
-        {/* {this.props.currentProject.notes ? <NoteList notes={this.props.currentProjectNotes}/> : null} */}
-        <Video />
-        {this.props.displayNoteForm ? <NoteForm currentVideoTime={this.props.currentVideoTime}/> : null}
-        {this.props.displayAddUserToProjectForm ? <AddUserToProjectForm /> : null}
-        {this.props.displayComments ? <Comments /> : null}
+        <ActionCable
+          channel={{ channel: 'NotesChannel' }}
+          onReceived={this.handleReceivedProjectData}
+        />
+          <NoteList notes={this.props.currentProject.notes} />
+          {/* {this.props.currentProject.notes ? <NoteList notes={this.props.currentProjectNotes}/> : null} */}
+          <Video />
+          {this.props.displayNoteForm ? <NoteForm currentVideoTime={this.props.currentVideoTime}/> : null}
+          {this.props.displayAddUserToProjectForm ? <AddUserToProjectForm /> : null}
+          {this.props.displayComments ? <Comments /> : null}
       </div>
     )
   }
@@ -43,7 +53,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchProject: (id) => {dispatch(actions.fetchProject(id))}
+    fetchProject: (id) => {dispatch(actions.fetchProject(id))},
+    addNote: (note) => {dispatch(actions.addNote(note))},
   }
 }
 
