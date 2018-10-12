@@ -138,8 +138,6 @@ export function postNote(note) {
     let configObj = {method: "POST", headers: {"Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem('jwt')}`}, body: JSON.stringify(note)}
     return fetch(process.env.REACT_APP_NOTES_API, configObj)
       .then(response => response.json())
-      // .then(json => console.log(json))
-      .then(note => dispatch({ type: types.ADD_NOTE, payload: note }))
   }
 }
 
@@ -246,8 +244,12 @@ export function postComment(comment) {
     }
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/comments`, configObj)
     .then(response => response.json())
-    .then(newComment => dispatch({ type: types.ADD_COMMENT, payload: newComment }))
+    // .then(newComment => dispatch({ type: types.ADD_COMMENT, payload: newComment }))
   }
+}
+
+export function addComment(comment) {
+  return { type: types.ADD_COMMENT, payload: comment }
 }
 
 export function toggleNoteComplete(note) {
@@ -282,7 +284,6 @@ export function toggleProjectList() {
 export function createProject(project) {
   return (dispatch) => {
     dispatch({ type: types.UPLOADING_VIDEO })
-    // let formBody = {title: project.title, video: project.video, user_id: project.user_id}
     let configObj = {method: "POST", headers: {Authorization: `Bearer ${localStorage.getItem('jwt')}`}, body: project}
 
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/projects`, configObj).then(resp => resp.json()).then(newProject => {
@@ -315,10 +316,6 @@ export function displayTimecode(timecode) {
   if (seconds.length < 2) {
     seconds = `0${seconds}`
   }
-
-  // hours.length > 1 ? hours : hours = "0" + hours
-  // minutes.length > 1 ? minutes : minutes = "0" + minutes
-  // seconds.length > 1 ? seconds : seconds = "0" + seconds
 
   return `${hours}:${minutes}:${seconds}`
 }

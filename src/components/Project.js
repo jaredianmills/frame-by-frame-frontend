@@ -22,19 +22,29 @@ class Project extends Component {
     }
   }
 
-  handleReceivedProjectData = (response) => {
+  handleReceivedNote = (response) => {
     if (response.note.project.id === this.props.currentProject.id) {
       this.props.addNote(response.note)
     }
   }
 
+  handleReceivedComment = (response) => {
+    // console.log(response.note);
+    this.props.addComment(response.comment)
+  }
+
 
   render() {
+    console.log(this.props.currentProject.notes);
     return (
       <div style={{marginTop: '1%'}}>
         <ActionCable
           channel={{ channel: 'NotesChannel' }}
-          onReceived={this.handleReceivedProjectData}
+          onReceived={this.handleReceivedNote}
+        />
+        <ActionCable
+          channel={{ channel: 'CommentsChannel' }}
+          onReceived={this.handleReceivedComment}
         />
           <NoteList notes={this.props.currentProject.notes} />
           {/* {this.props.currentProject.notes ? <NoteList notes={this.props.currentProjectNotes}/> : null} */}
@@ -55,6 +65,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchProject: (id) => {dispatch(actions.fetchProject(id))},
     addNote: (note) => {dispatch(actions.addNote(note))},
+    addComment: (comment) => {dispatch(actions.addComment(comment))}
   }
 }
 

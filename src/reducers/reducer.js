@@ -95,10 +95,14 @@ const reducer = (state = initialState, action) => {
       return {...state, comments: action.payload, fetchingComments: false}
 
     case types.ADD_COMMENT:
-      let foundNote = state.currentProjectNotes.find(note => note.id === action.payload.note_id)
-      let updatedNote = {...foundNote, comments: [...foundNote.comments, action.payload]}
-      let index = state.currentProjectNotes.indexOf(foundNote)
-      return {...state, comments: [...state.comments, action.payload], currentProjectNotes: [...state.currentProjectNotes.slice(0, index), updatedNote, ...state.currentProjectNotes.slice(index + 1)]}
+      if (state.currentProjectNotes.find(note => note.id === action.payload.note_id)) {
+        let foundNote = state.currentProjectNotes.find(note => note.id === action.payload.note_id)
+        let updatedNote = {...foundNote, comments: [...foundNote.comments, action.payload]}
+        let index = state.currentProjectNotes.indexOf(foundNote)
+        return {...state, comments: [...state.comments, action.payload], currentProjectNotes: [...state.currentProjectNotes.slice(0, index), updatedNote, ...state.currentProjectNotes.slice(index + 1)]}
+      } else {
+        return state
+      }
 
     case types.TOGGLE_NOTE_COMPLETE:
       let completedNote = action.payload
